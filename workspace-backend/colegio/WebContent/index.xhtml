@@ -1,0 +1,192 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/plantillas/cuerpo.xhtml">
+	
+	
+	<ui:define name="renderCenter" >
+	
+	<h:head>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/recursos/js/jquery.reflection.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/recursos/js/jquery.cloud9carousel.js"></script>	
+	<link 	rel="stylesheet"       type="text/css" href="#{facesContext.externalContext.requestContextPath}/recursos/css/common.css"/>
+
+
+	<style type="text/css">
+    a {
+      color: #da2020;
+    }
+    a:hover {
+      color: #d6f300;
+    }
+    .wrap > h1 {
+      margin: 26px auto;
+    }
+	
+    #showcase {
+	height: 204px;
+    }
+	
+    #item-title {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 22px;
+      color: #0651A8;
+	  font-size: 9pt;
+	  font-weight:bold;
+	  font-family: Tahoma;
+    }
+	
+    #nav {
+      text-align: center;
+    }
+	
+    #nav > button {
+      width: 64px;
+      height: 36px;
+      color: #666;
+      font: bold 16px arial;
+      text-align: center;
+      margin: 5px;
+      text-shadow: 0px 1px 0px #f5f5f5;
+      background: #f6f6f6;
+      border: solid 2px rgba(0, 0, 0, 0.4);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+    #nav > button:active,
+    #nav > button.down {
+      background: #dfdfdf;
+      border: solid 2px rgba(0, 0, 0, 0.6);
+      box-shadow: none;
+    }
+    #share {
+      top: -9px;
+    }
+    #credits {
+      top: -15px;
+    }
+
+	
+	.label{
+	color: #2779AA;
+	font-size: 9pt;
+	font-weight:bold;
+	font-size: 9pt;
+	font-family: Tahoma;
+	text-align:center
+	}
+	</style>
+
+  <script>
+  $(function() {
+      var showcase = $("#showcase"), title = $('#item-title')
+
+      showcase.Cloud9Carousel( {
+        yOrigin: 42,
+        yRadius: 48,
+        mirror: {
+          gap: 12,
+          height: 0.2
+        },
+        buttonLeft: $("#nav > .left"),
+        buttonRight: $("#nav > .right"),
+        autoPlay: 1,
+        bringToFront: true,
+        onRendered: rendered,
+        onLoaded: function() {
+          showcase.css( 'visibility', 'visible' )
+          showcase.css( 'display', 'none' )
+          showcase.fadeIn( 1500 )
+        }
+      } )
+
+      function rendered( carousel ) {
+        title.text( carousel.nearestItem().element.alt )
+
+        // Fade in based on proximity of the item
+        var c = Math.cos((carousel.floatIndex() % 1) * 2 * Math.PI)
+        title.css('opacity', 0.5 + (0.5 * c))
+      }
+
+      //
+      // Simulate physical button click effect
+      //
+      $('#nav > button').click( function( e ) {
+        var b = $(e.target).addClass( 'down' )
+        setTimeout( function() { b.removeClass( 'down' ) }, 80 )
+      } )
+
+      $(document).keydown( function( e ) {
+        //
+        // More codes: http://www.javascripter.net/faq/keycodes.htm
+        //
+        switch( e.keyCode ) {
+          /* left arrow */
+          case 37:
+            $('#nav > .left').click()
+            break
+
+          /* right arrow */
+          case 39:
+            $('#nav > .right').click()
+        }
+      } )
+    })
+  </script>
+	</h:head>
+		
+	<h:body style="height: 100%; margin: 0; overflow-x: hidden;">
+		
+	<h:form>
+		
+	<div class="wrap">
+
+    <br/>
+    
+    <table width="555" border="0" align="center">
+      <tbody>
+        <tr align="center">
+          <td width="549"> <label class="label" style="font-size:30px"> </label></td>
+        </tr>
+        <tr align="center">
+          <td> <label class="label" style="font-size:20px">Sistema de Información Postas EsSalud </label></td>
+        </tr>
+        <tr align="center">
+          <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td><h:graphicImage styleClass="cloud9-item" value="/recursos/imagenes/mundo2.png" width="124" height="124"/> </td>
+        </tr>
+      </tbody>
+    </table>
+       <br/>
+
+      <div id="showcase" class="noselect">     
+      	<h:graphicImage styleClass="cloud9-item" value="/recursos/imagenes/icon-admision.png" alt="Admisión y Citas" style="cursor:pointer;"/> 
+      	<h:graphicImage styleClass="cloud9-item" value="/recursos/imagenes/icon-cons-externa.png" alt="Consulta Externa" style="cursor:pointer;"/> 
+      	<h:graphicImage styleClass="cloud9-item" value="/recursos/imagenes/icon-farmacia.png" alt="Farmacia" style="cursor:pointer;"/> 
+      	<h:graphicImage styleClass="cloud9-item" value="/recursos/imagenes/icon-reportes.png" alt="Reportes" style="cursor:pointer;"/> 
+      	<h:graphicImage styleClass="cloud9-item" value="/recursos/imagenes/icon-emergencia.png" alt="Urgencias" style="cursor:pointer;"/> 
+      </div>
+      <p id="item-title">&nbsp;</p>
+  </div>	 
+
+	</h:form>
+	</h:body>
+
+	</ui:define>
+	
+</ui:composition>
+
+      

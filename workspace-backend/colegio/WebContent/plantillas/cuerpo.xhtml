@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+          
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+   
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Seguro Social de Salud del Perú - ESSALUD</title>
+            </f:facet>
+            
+            <style type="text/css"> .ui-widget{font-size:90% !important;} </style>
+            <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/recursos/imagenes/fcon_hise.ico"/>
+            <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/recursos/css/estiloBoton.css"/>
+            <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/recursos/css/estiloLetra.css"/>
+            <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/recursos/js/validaciones.js?v=2"></script>    
+            <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/recursos/js/calendar-localization.js"></script>
+            <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/recursos/js/jquery-ui.js"></script>
+            <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/recursos/js/jquery-ui.multidatespicker.js"></script>
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+            <p:growl id="msgs" showDetail="true" autoUpdate="true" life="6000"></p:growl>
+               <p:layoutUnit position="north" closable="true">                  
+                        <ui:include src="sessionTimeOut.xhtml"/>                    
+                </p:layoutUnit>
+			
+                <p:layoutUnit position="north" closable="false">                  
+                        <ui:include src="cabecera.xhtml"/>                    
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="west" id="west" resizable="false" header="Menu Principal" style="height:580px;overflow:hidden;" size="225" collapsible="true">
+					<ui:include src="menu.xhtml" />
+				</p:layoutUnit>
+       
+                <p:layoutUnit position="center">
+                    <ui:insert name="renderCenter"> 
+                        <ui:include src="/intro.xhtml"/> 
+                    </ui:insert>
+                </p:layoutUnit>
+                
+                <p:layoutUnit id="footer" position="south" closable="true" collapsible="true" style="text-align: center;">                  
+                        <ui:include src="piePagina.xhtml"/>                  
+                </p:layoutUnit>
+			
+            </p:layout>
+        </h:body>
+
+   
+</html>
+
+
+
+

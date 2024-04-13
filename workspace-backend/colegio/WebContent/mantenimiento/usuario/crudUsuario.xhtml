@@ -1,0 +1,76 @@
+<ui:composition template="/WEB-INF/template/layoutPadre.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Registrar Usuario</ui:define>
+
+	<ui:define name="cuerpo">
+
+		<f:metadata>
+			<f:event listener="#{matriculaManagedBean.inicializar}"
+				type="preRenderView"></f:event>
+		</f:metadata>
+
+		<h:head>
+			<script name="jquery/jquery.js" library="primefaces"></script>
+			<title>Registrar Usuario</title>
+		</h:head>
+
+		<h:form>
+			<p:growl id="messages"></p:growl>
+			<div id="registroUsuario" align="center">
+
+
+				<p:panel header="Datos del Usuario" id="panelDatosUsuario"  style="width: 30%">
+					<p:panelGrid>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Empleado:"></p:outputLabel>
+							</p:column>
+							<p:column>
+								<p:inputText value="#{matriculaBean.alumno.alumDni}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Login:"></p:outputLabel>
+							</p:column>
+							<p:column>
+								<p:inputText value="#{matriculaBean.alumno.alumNombre}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Contraseña:"></p:outputLabel>
+							</p:column>
+							<p:column>
+								<p:inputText value="#{matriculaBean.alumno.alumApePate}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Repetir Contraseña:"></p:outputLabel>
+							</p:column>
+							<p:column>
+								<p:inputText value="#{matriculaBean.alumno.alumApeMate}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Perfil:"></p:outputLabel>
+							</p:column>
+							<p:column>
+								<p:inputText value="#{matriculaBean.alumno.alumApePate}"></p:inputText>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:panel>
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<link rel="stylesheet" type="text/css"
+	href="recursos/css/estilologin.css" />
+
+<h:head>
+	<title>Login Colegio</title>
+
+	<script type="text/javascript">
+
+        	var nav = navigator.userAgent.toLowerCase();
+
+	        if(nav.indexOf("msie") != -1){
+	        	window.history.forward(-1);
+	        } else if(nav.indexOf("firefox") != -1){
+	        	window.history.forward();
+	        } else if(nav.indexOf("opera") != -1){
+	        	window.history.forward(-1);
+	        } else if(nav.indexOf("chrome") != -1){
+	        	window.history.forward(-1);
+	        } else {
+	        	window.history.forward(-1);
+	        }
+	   	
+		</script>
+
+	<style type="text/css">
+.ui-selectonemenu {
+	width: 100% !important;
+	font-size: 85% !important;
+}
+
+.ui-selectonemenu-item {
+	font-size: 75% !important;
+}
+
+.ui-selectonemenu-label {
+	width: 90% !important;
+}
+</style>
+	<!--          <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/recursos/imagenes/fcon_hise.ico"/> -->
+</h:head>
+
+<h:body>
+<!-- <f:loadBundle basename="pe.gafahsoft.colegio.resources.messages" var="msg" /> -->
+	<div class="form animated flipInX"
+		style="border-style: solid; vertical-align: top; width: 400px; height: 240px; border-color: #3399FF; border-radius: .5rem; box-shadow: 2px -4px 1px #000; border-width: 3px;">
+		<h:form id="form">
+			<p:growl id="growl" life="3000" />
+			<table>
+				<tr>
+					<td><p:inputText id="login"
+							value="#{usuarioBean.usuario.login}" type="text" maxlength="10"
+							style="width:200px;color: #333333;" autocomplete="false"
+							placeholder="login"></p:inputText></td>
+					<td style="width: 210px; height: 50px;" align="center" rowspan="3">
+
+					</td>
+				</tr>
+				<tr>
+					<td> <p:password id="clave"
+							value="#{usuarioBean.usuario.clave}" autocomplete="false"
+							style="width:200px;" type='password' feedback="false"
+							maxlength="15" placeholder="clave"></p:password></td>
+				</tr>
+				<tr>
+					<td><p:commandButton actionListener="#{usuarioBean.login}" 
+							style="width:200px;height:30px;
+                      					   background-image:none;
+                      					   background-color:#2D89E5;"
+							 value="L O G I N" /></td>
+
+				</tr>
+
+			</table>
+		</h:form>
+	</div>
+</h:body>
+
+</html>

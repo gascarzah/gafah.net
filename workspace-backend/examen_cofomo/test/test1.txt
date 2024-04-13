@@ -1,0 +1,19 @@
+Blog Engine powered by Spring Boot
+This project is a simple REST application for serving a blog. It uses Spring Boot, Spring Data Mongo, MongoDB and some other helper libraries.
+
+Problem Statement
+In its current state, this application only serves blog post details via a GET request at /posts/{id}, where {id} is a post identifier.
+
+Your task is to add a comments feature. The application should be able to serve two new kinds of requests:
+
+POST at /posts/{1}/comments - this should save a new comment for the post matching the submitted {id}
+GET at /posts/{1}/comments - this should return all comments for a post matching the submitted {id}
+There is a service class CommentService that must be implemented. Review that class to gain more understanding as per the requirements. For each method, there is a javadoc comment that describes the expected behavior.
+
+A subset of tests are currently failing and your solution should result in these tests passing per the requirements presented above.
+
+Remember that the included tests only verify the apps functional correctness. In addition please remember to apply best practices while developing your solution.
+
+Feel free to create and modify files. You are also welcome to add new dependencies, just make certain to modify the appropriate pom.xml. Do not change unit tests, however.
+
+Please follow the conventions used in this project.

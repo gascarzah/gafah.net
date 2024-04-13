@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/plantillas/cuerpo.xhtml">
+	<ui:define name="renderCenter">
+
+
+		<h:form>
+
+			<div id="registroAlumno" align="center">
+
+				<!-- 				<h:outputLabel value="#{alumnoBean.parametro.dniAlum}" /> -->
+
+				<p:panel header="Buscar Alumno" id="panelDatosAlumno">
+					<p:panelGrid style="align: left">
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.dni']}" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{alumnoBean.parametro.dniAlum}"
+									style="width: 40%" maxlength="8" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.apepaterno']}" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{alumnoBean.parametro.apePate}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.apematerno']}" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{alumnoBean.parametro.apeMate}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.nombre']}" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{alumnoBean.parametro.nombres}"></p:inputText>
+							</p:column>
+							<p:column>
+								<p:commandButton actionListener="#{alumnoBean.buscarAlumno()}"
+									icon="ui-icon-search" update=":#{p:component('idDtAlumno')}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:panel>
+			</div>
+
+			<div id="resultadoAlumno">
+				<p:dataTable id="idDtAlumno" var="obj" paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					value="#{alumnoBean.matriculados}"
+					emptyMessage="No se encontraron registros">
+
+
+					<p:column headerText="Dni" width="4%" style="text-align:center"
+						sortBy="#{obj.dni}">
+						<h:outputText value="#{obj.dni}" />
+					</p:column>
+					<p:column headerText="Alumno" width="4%" sortBy="#{obj.alumno}">
+						<h:outputText value="#{obj.alumno}" />
+					</p:column>
+
+					<p:column headerText="Nacimiento" width="4%"
+						style="text-align:center" sortBy="#{obj.fecNaci}">
+						<h:outputText value="#{obj.fecNaci}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column width="1%" style="text-align:center">
+						<p:commandButton id="btnMod1" icon="fa fa-child"
+							title="Editar Alumno"
+							actionListener="#{alumnoBean.irModificar(obj)}"
+							update=":#{p:component('idMantenimientoAlumno')}">
+							<f:param name="habilitar" value="false"></f:param>
+						</p:commandButton>
+					</p:column>
+					<p:column width="1%" style="text-align:center">
+						<p:commandButton id="btnPadre" icon="fa fa-male"
+							title="Datos del padre"
+							actionListener="#{alumnoBean.irApoderado(obj)}"
+							update=":#{p:component('idMantenimientoApoderado')},:#{p:component('idEstadoCivil')}">
+							<f:param name="apoderado" value="32"></f:param>
+						</p:commandButton>
+					</p:column>
+					<p:column width="1%" style="text-align:center">
+						<p:commandButton id="btnMadre" icon="fa fa-female"
+							title="Datos de la madre"
+							actionListener="#{alumnoBean.irApoderado(obj)}"
+							update=":#{p:component('idMantenimientoApoderado')},:#{p:component('idEstadoCivil')}">
+							<f:param name="apoderado" value="33"></f:param>
+						</p:commandButton>
+					</p:column>
+
+
+				</p:dataTable>
+				<br />
+			</div>
+
+
+			<center>
+
+				<p:commandButton id="btnGrabar" icon="ui-icon-plus"
+					value="Registrar Alumno" action="#{alumnoBean.agregar}"
+					update=":#{p:component('idMantenimientoAlumno')}, :#{p:component('filaMatricula')}">
+					<f:param name="habilitar" value="false"></f:param>
+				</p:commandButton>
+			</center>
+		</h:form>
+
+		<p:dialog id="idMantenimientoAlumno"
+			header="#{alumnoBean.tituloAgregar}" widgetVar="dialogoAgregarAlumno"
+			resizable="true" position="center" draggable="true" width="650px"
+			height="270px">
+			<ui:include src="#{alumnoBean.manteAlumno}.xhtml" />
+		</p:dialog>
+
+		<p:dialog id="idMantenimientoApoderado"
+			header="#{alumnoBean.tituloAgregar}"
+			widgetVar="dialogoAgregarApoderado" resizable="true"
+			position="center" draggable="true" width="700px" height="400px">
+			<ui:include src="#{alumnoBean.manteApoderado}.xhtml" />
+		</p:dialog>
+
+	</ui:define>
+
+</ui:composition>

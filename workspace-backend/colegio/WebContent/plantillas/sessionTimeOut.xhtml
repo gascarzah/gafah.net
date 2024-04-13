@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:p="http://primefaces.org/ui"	
+	  xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="utf-8">
+    </meta> 
+    
+    
+    <script type="text/javascript">
+
+    /****Full variables globales***/
+	 var mins = 1; //Default
+     var secs = mins * 60;
+     var currentSeconds = 0;
+     var currentMinutes = 0;
+     setTimeout('Decrement()',1000);
+    /******************************/
+    
+
+   	jQuery(document).ready(function() {
+
+   		var tExpiraMin  = $('#frmTimeOut\\:tExpira').val(); 
+   		mins = tExpiraMin; //Real
+        secs = mins * 60;
+
+   		$(document).click(function(e) { 
+   			secs = mins * 60;
+   			currentSeconds = 0;
+   		    currentMinutes = 0;
+   		});
+   		
+     });
+
+    
+	function Decrement() {
+	        currentMinutes = Math.floor(secs / 60);
+	        currentSeconds = secs % 60;
+	        if(!(currentSeconds > 9)) currentSeconds = "0" + currentSeconds;
+	        secs--;
+	        document.getElementById("timer").innerHTML = currentMinutes + ":" + currentSeconds;  //Set the element id you need the time put into.
+	        if(secs !== -1){
+			   setTimeout('Decrement()',1000);
+			}else{
+				PF('sessionTimeOutDialog').show();
+			}
+	 }
+	 
+  </script>
+	 
+</h:head>
+
+
+<h:body>
+       
+<h:form id="frmTimeOut">
+       
+     <!--  
+		<p:idleMonitor timeout="#{mBSeguriMonitor.tExpira}">		
+		 	<p:ajax event="idle" listener="#{mBSeguriMonitor.logoutListener()}" oncomplete="PF('sessionTimeOutDialog').show()"/>		  
+		</p:idleMonitor>
+      --> 		
+ 
+		<p:dialog header="Observación:" 
+				  widgetVar="sessionTimeOutDialog" 			  
+		      	  modal="true"		      
+		      	  position="center"
+     		   	  width="400" height="80" 
+     		      closable="false"
+		      	  resizable="false"
+		      	  draggable="false" 
+     		      visible="false"
+     		      style="background-color:#EFF7FE">
+			        
+			     <p:panel style="text-align: center;">
+        			
+            			<p:outputLabel value="Su sessión en el sistema ha caducado por inactividad." style="font-size:10pt !important; color:#2779AA;" />
+            			<p/>
+                    	<p:commandButton icon="ui-icon-check"  onclick="window.location='#{facesContext.externalContext.requestContextPath}/login.xhtml';" value="Aceptar" />
+                      
+                  </p:panel>
+	        
+		</p:dialog>
+		
+<!-- 		<h:inputHidden id="tExpira" value="#{mBSeguriMonitor.tExpira}"/> -->
+		
+</h:form>						
+</h:body>
+
+</html>

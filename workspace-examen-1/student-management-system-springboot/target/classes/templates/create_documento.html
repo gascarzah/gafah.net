@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Documentos</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Documentos</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/documentos}">Listado de Documentos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Registrar Documento </h1>
+				<div class = "card-body">
+					<form th:action="@{/documentos}" th:object = "${documento}" method="POST">
+						<div class ="form-group">
+							<label> Nit </label>
+							<input
+							type = "text"
+							name = "nit"
+							th:field = "*{nit}"
+							class = "form-control"
+							placeholder="Ingrese el numero de Nit" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Descripcion </label>
+							<input
+							type = "text"
+							name = "descripcion"
+							th:field = "*{descripcion}"
+							class = "form-control"
+							placeholder="Ingrese una descripcion del documento" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> fecha de Registro </label>
+							<input
+							type = "date"
+							name = "fechaRegistro"
+							th:field = "*{fechaRegistro}"
+							class = "form-control"
+							placeholder="Enter Student Email" 
+							value="12/12/2023"
+							/>
+						</div-->
+						
+						<div class ="form-group">
+							<label> fecha de Respuesta </label>
+							<input
+							type = "date"
+							name = "fechaRespuesta"
+							th:field = "*{fechaRespuesta}"
+							class = "form-control"
+							placeholder="Ingrese la fecha de respuesta" 
+							/>
+						</div>
+						
+						<div class = "box-footer" >
+							<button type="submit" class = "btn btn-primary">
+								Registrar
+							</button>
+						</div>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

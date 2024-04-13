@@ -1,0 +1,503 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+>
+
+
+<!-- <ui:define name="metadata"> -->
+<!-- 	    <f:metadata> -->
+<!-- 	        <f:event type="preRenderView" -->
+<!-- 	            listener="#{mBOdontograma.verOdontograma}" /> -->
+<!-- 	    </f:metadata> -->
+<!-- 	</ui:define> -->
+<style>
+.inputText_Odonto{
+	width: 25px;
+	height:10px;  
+	text-transform:uppercase;
+	color: blue;
+	
+	font-size:8px !important;
+	
+}
+</style>
+<script>
+
+var buena = "1";
+var cariada = "2";
+var obturada= "3";
+var ausente = "4";
+var fractura = "5";
+var protesis = "6";
+var porextraer= "7";
+var protRemovible = "8";//ext
+var protTotal = "9";//ext
+var aparOrtFijo = "10";//ext
+var aparOrtFijoMal = "11";//ext
+var aparOrtRem = "12";//ext
+var aparOrtRemMal  = "13";//ext
+var coronaDefinitiva = "14";
+var coronaTemporal = "#{mBOdontograma.mapHallazgos['coronaTemporal']}";
+var diastema = "15";//ext
+var erupcion ="16";
+var clavija = "17";
+var extruido = "18";
+var intruido  = "19";
+var edentuloTotal = "20";//ext
+var fusion = "21";//ext
+var giroversion = "22";
+var migracion = "23";
+var munon = "24";
+var remanente = "25";
+var restauracionTemporal = "26";
+var sellantes  =  "27";
+var supernumerario =  "28";//ext
+var transposicion =  "29";//ext
+var pulpar =  "30";
+var protFija =  "31";//ext
+var protFijaMal =  "32";//ext
+var munonMal =  "33";
+var protRemovibleMal=  "34";
+var protTotalMal=  "35";
+
+function toUpperCase(value){
+	
+	return value.toUpperCase();
+}
+
+var sOptMarcaDoble = "36";
+var sOptMarcaDobleInicio = "37";
+var sOptMarcaDobleFin = "38";
+
+var sOptMarcaIndividual= "39";
+var sOptPzaIndividual= "40";
+
+</script>
+		<meta http-equiv="Expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+
+
+
+		<!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       	More info: h5bp.com/b/378 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+		<!-- CSS: implied media=all -->
+		<!-- CSS concatenated and minified via ant build script-->
+		<!--   <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/css/style.css"/> -->
+		<!--   <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/css/jquery-ui-1.8.17.custom.css"/> -->
+		<link rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/jquery.svg.css" />
+		<link rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/odontograma.css" />
+		<!-- end CSS-->
+
+		<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="#{facesContext.externalContext.requestContextPath}/recursos/js/svn/modernizr-2.6.2.min.js"></script> -->
+
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="#{facesContext.externalContext.requestContextPath}/recursos/js/modernizr-2.0.6.min.js"></script>	 -->
+		<!-- scripts concatenated and minified via ant build script-->
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/validaciones.js?v=2"></script>
+
+
+	
+<body>	
+	  		
+
+		<div id="container">
+
+
+			<div id="main2" >
+
+				<table>
+					<tr>
+						<td valign="top" width="15%" align="left">
+<!-- 							<div id="optIzq" align="left"> -->
+								<table cellspacing="0">
+<!-- 									<c:forEach items="#{mBOdontograma.listOptIzq}" var="opc"> -->
+										<tr>
+											<td><input type='radio' name="opt" value='1'></input></td>
+											<td style="font-size: 10px">buena</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='2'></input></td>
+											<td style="font-size: 10px">cariada</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='3'></input></td>
+											<td style="font-size: 10px">obturada</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='4'></input></td>
+											<td style="font-size: 10px">ausente</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='5'></input></td>
+											<td style="font-size: 10px">fractura</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='6'></input></td>
+											<td style="font-size: 10px">protesis</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='7'></input></td>
+											<td style="font-size: 10px">porextraer</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='8'></input></td>
+											<td style="font-size: 10px">protRemovible</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='9'></input></td>
+											<td style="font-size: 10px">protTotal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='10'></input></td>
+											<td style="font-size: 10px">aparOrtFijo</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='11'></input></td>
+											<td style="font-size: 10px">aparOrtFijoMal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='12'></input></td>
+											<td style="font-size: 10px">aparOrtRem</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='13'></input></td>
+											<td style="font-size: 10px">aparOrtRemMal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='14'></input></td>
+											<td style="font-size: 10px">coronaDefinitiva</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='15'></input></td>
+											<td style="font-size: 10px">coronaTemporal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='16'></input></td>
+											<td style="font-size: 10px">diastema</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='17'></input></td>
+											<td style="font-size: 10px">erupcion</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='18'></input></td>
+											<td style="font-size: 10px">clavija</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='19'></input></td>
+											<td style="font-size: 10px">extruido</td>
+										</tr>
+	<!--								</c:forEach>-->
+								</table>
+<!-- 							</div> -->
+						</td>
+						<td valign="middle" >
+							<center>
+								<div id="odontograma-wrapper">
+
+									<ui:include
+										src="cuadranteSuperiorObsOdontograma.xhtml" />
+									<div id="odontograma"></div>
+									<ui:include
+										src="cuadranteInferiorObsOdontograma.xhtml" />
+								</div>
+							</center>
+						</td>
+						<td valign="top" align="right" width="15%">
+<!-- 							<div id="optDer" align="right"> -->
+								<table cellspacing="0">
+								
+										<tr>
+											<td><input type='radio' name="opt" value='20'></input></td>
+											<td style="font-size: 10px">intruido</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='21'></input></td>
+											<td style="font-size: 10px">edentuloTotal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='22'></input></td>
+											<td style="font-size: 10px">fusion</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='23'></input></td>
+											<td style="font-size: 10px">giroversion</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='24'></input></td>
+											<td style="font-size: 10px">migracion</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='25'></input></td>
+											<td style="font-size: 10px">munon</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='26'></input></td>
+											<td style="font-size: 10px">remanente</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='27'></input></td>
+											<td style="font-size: 10px">restauracionTemporal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='28'></input></td>
+											<td style="font-size: 10px">sellantes</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='29'></input></td>
+											<td style="font-size: 10px">supernumerario</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='30'></input></td>
+											<td style="font-size: 10px">transposicion</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='31'></input></td>
+											<td style="font-size: 10px">pulpar</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='32'></input></td>
+											<td style="font-size: 10px">fusion</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='33'></input></td>
+											<td style="font-size: 10px">protFija</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='34'></input></td>
+											<td style="font-size: 10px">protFijaMal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='35'></input></td>
+											<td style="font-size: 10px">munonMal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='36'></input></td>
+											<td style="font-size: 10px">protRemovibleMal</td>
+										</tr>
+										<tr>
+											<td><input type='radio' name="opt" value='37'></input></td>
+											<td style="font-size: 10px">protTotalMal</td>
+										</tr>
+<!-- 									<c:forEach items="#{mBOdontograma.listOptDer}" var="opc"> -->
+<!-- 										<tr> -->
+<!-- 											<td style="font-size: 10px">#{opc.desTipo}</td> -->
+<!-- 											<td><input type='radio' name="opt" value='#{opc.codTipo}'></input></td> -->
+											
+<!-- 										</tr> -->
+<!-- 									</c:forEach> -->
+								</table>
+<!-- 							</div> -->
+						</td>
+					</tr>
+				</table>
+
+			</div>
+
+			<div id="tratamiento">
+				<table>
+				<tr>
+<!-- 					<td valign="top" > -->
+<!-- 						<ui:include src="/paginas/conext/registroAtenciones/opcionesOdontograma.xhtml" /> -->
+<!-- 					</td> -->
+					<td  style="padding-left: 70px;"></td>
+					<td valign="top" >
+					
+					<table width="530px">
+						<tr>
+								<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+									INDICE DE LA PLACA BACTERIANA (I.P.B) 
+								</font></td>
+						</tr>
+						<tr>
+							<td>
+							    <input type="radio" name="IPB" value="430" id="id_430" /><font size="1">Menor Ã³ igual  1</font> 
+							</td>
+							<td>      
+							     <input type="radio" name="IPB" value="431" id="id_431" /><font size="1">Mayor a 1 y menor Ã³ igual a 2</font> 
+							</td>
+							<td>
+							      <input type="radio" name="IPB" value="432" id="id_432"/><font size="1">Mayor a 2</font> 
+							</td>
+							
+						</tr>
+						
+						<tr>
+								<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+									EXPERIENCIA DE CARIES (E.C) 
+								</font></td>
+						</tr>
+						<tr>
+							<td>
+							      <input type="radio" name="EC" value="434" id="id_434"/><font size="1">0 a 2 sup. oclu. cariad.</font> 
+							</td>
+							<td>      
+							      <input type="radio" name="EC" value="435" id="id_435" /><font size="1"> 2 a 6 sup. oclu. cariad.</font>
+							</td>
+							<td>
+							     <input type="radio" name="EC" value="436" id="id_436" /><font size="1"> Mayor A 6 sup. oclu. cariad.</font> 
+							</td>
+						</tr>
+						
+						<tr>
+							<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+								FRECUENCIA DE CONSUMOS DE CARBOHIDRATOS (F.C.CH.) 
+							</font></td>
+						</tr>
+						<tr>
+							<td>
+							    <input type="radio" name="FCCH" value="438" id="id_438" /><font size="1">Menor Ã³ igual a 3 Veces/Dia</font> 
+							</td>
+							<td>      
+							    <input type="radio" name="FCCH" value="439" id="id_439" /><font size="1">4 Veces/Dia</font> 
+							</td>
+							<td>
+							   <input type="radio" name="FCCH" value="440" id="id_440" /><font size="1">Mayor a 4 Veces/Dia</font> 
+							</td>
+							
+						</tr>
+						
+						<tr>
+							<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+								RIESGO ESTOMATOLÃ“GICO (R.E) 
+							</font></td>
+						</tr>
+						<tr>
+							<td>
+							      <input type="radio" name="RE" value="442" id="id_442" /><font size="1">Bajo</font> 
+							</td>
+							<td>      
+							      <input type="radio" name="RE" value="443" id="id_443"/><font size="1">Medio</font> 
+							</td>
+							<td>
+							      <input type="radio" name="RE" value="444" id="id_444"/><font size="1">Alto</font> 
+							</td>
+							
+						</tr>
+						</table>
+					</td>
+					
+				</tr>
+			</table>	
+			
+			
+				
+			
+			 
+<!-- 			 <input id="prueba" type="hidden" name="prueba"/> -->
+				<input type="hidden" id="cPerCariada" 		name="cPerCariada" />
+			  	<input type="hidden" id="cResCariada" 		name="cResCariada" />
+			  	<input type="hidden" id="cPerObturada" 		name="cPerObturada" />
+			  	<input type="hidden" id="cResObturada" 		name="cResObturada" />
+			  	<input type="hidden" id="cPerPerdida" 		name="cPerPerdida" />
+			  	<input type="hidden" id="cResPerdida" 		name="cResPerdida" />
+			  	<input type="hidden" id="cPerProtesis" 		name="cPerProtesis" />
+			  	<input type="hidden" id="cResProtesis" 		name="cResProtesis" />
+			    <input type="hidden" id="cPerPorExtraer" 	name="cPerPorExtraer" />
+			  	<input type="hidden" id="cResPorExtraer" 	name="cResPorExtraer" />
+			  	<input type="hidden" id="cPerFracturada" 	name="cPerFracturada" />
+			  	<input type="hidden" id="cResFracturada" 	name="cResFracturada" />	
+				<input type="hidden" id="vDientes" 			name="vDientes" />
+				<input type="hidden" id="cPerTotal" 		name="cPerTotal" />
+				<input type="hidden" id="cResTotal" 		name="cResTotal" />
+				<input type="hidden" id="vPiezasMarcadas" 			name="vPiezasMarcadas" />
+				
+				<!-- para las marcas con las nuevas opciones -->
+				<input type="hidden" id="vPiezasIndMark" 	name="vPiezasIndMark" />
+				<input type="hidden" id="vOptIndMark" 	name="vOptIndMark" />
+				
+				<input type="hidden" id="vOptExtMark" 	name="vOptExtMark" />
+				<input type="hidden" id="vPiezasIniExtMark" 	name="vPiezasIniExtMark" />
+				<input type="hidden" id="vPiezasFinExtMark" 	name="vPiezasFinExtMark" />
+			</div>
+			
+			
+
+		
+		</div>
+	
+
+		<!--! end of #container -->
+
+
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+
+<!-- 	</h:form> -->
+		
+		
+		  <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/knockout-2.0.0.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.svg.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.svggraph.min.js"></script>
+		
+		 		<script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/svg/svg.js"></script>						
+
+
+		<script type="text/javascript" 	src="#{facesContext.externalContext.requestContextPath}/resources/js/odontogramaVariables.js"></script>
+
+		<script type="text/javascript" 	src="#{facesContext.externalContext.requestContextPath}/resources/js/odontogramaUtils.js"></script>
+		
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/odontograma.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/nuevo.js"></script>
+		
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="./recursos/js/knockout-2.0.0.js"></script> -->
+<!-- 		<script type="text/javascript"  -->
+<!--  			src="./recursos/js/svg/jquery.svg.js"></script> -->
+
+<!--  		<script type="text/javascript"  -->
+<!--  			src="./recursos/js/svg/jquery.svggraph.js"></script> -->
+
+<!--  		<script type="text/javascript"  -->
+<!--  			src="./recursos/js/svg/svg.js"></script>						 -->
+
+
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="./recursos/js/odontogramaVariables.js"></script> -->
+
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="./recursos/js/odontogramaUtils.js"></script> -->
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="./recursos/js/odontograma.js" ></script> -->
+<!-- 		<script type="text/javascript" -->
+<!-- 			src="./recursos/js/nuevo.js"></script> -->
+
+
+		
+		
+		
+
+</body>
+</ui:composition>

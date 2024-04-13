@@ -1,0 +1,64 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+  
+
+
+	<h:form>
+
+		<table width="100%" border="0" class="grad">
+			<tbody>
+				<tr align="center">
+					<td width="27%" align="left">
+<!-- 					   <h:graphicImage value="/recursos/imagenes/logoEssalud.png" width="259" height="72"/>  -->
+					</td>
+					<td width="46%"
+						style="color: #FFFFFF; font-size: 14pt; font-weight: bold; font-family: Tahoma;">
+						Sistema de Información Postas EsSalud
+				    </td>
+					<td width="27%" align="right">
+<!-- 					    <h:graphicImage value="/recursos/imagenes/profesionales.png" width="273" height="85"/>  -->
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+
+						<table width="100%" border="0" class="datos">
+							<tbody>
+								<tr>
+									<td width="336">Bienvenido(a): 
+<!-- 									<p:outputLabel value="#{mBSeguriMonitor.nomUsuario}"/>   -->
+									<h:outputText value="#{sessionScope.usuario.nomUsu}" /> 
+									</td> 
+									<td width="673" align="center" style="font-weight: bold; font-size: 10pt;">
+<!-- 									<p:outputLabel value="#{mBSeguriMonitor.desCas}"/> -->
+									</td>
+									
+										
+									<td width="209" align="right">Tu sesión finalizará en: <span 
+										id="timer" style="font-weight: bold; font-size: 10pt;" ></span></td>
+									<td width="62" align="right">Inicio&nbsp;
+							        <p:commandLink onclick="window.location='#{facesContext.externalContext.requestContextPath}/index.xhtml';">
+										<h:graphicImage value="/recursos/imagenes/iconHome.png" width="17" height="17"/>
+								    </p:commandLink> 
+									</td>
+									
+									<td width="62" align="right">Salir&nbsp;
+							        <p:commandLink actionListener="#{mBSeguriMonitor.logoutListener}" onclick="window.location='#{facesContext.externalContext.requestContextPath}/login.xhtml';">
+										<h:graphicImage value="/recursos/imagenes/iconExit.png" width="15" height="15"/>
+								    </p:commandLink> 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</h:form>
+</ui:composition>

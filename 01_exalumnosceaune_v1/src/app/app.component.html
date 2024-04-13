@@ -1,0 +1,51 @@
+
+
+        <header class="kingster-header-wrap kingster-header-style-plain  kingster-style-menu-right kingster-sticky-navigation kingster-style-fixed" data-navigation-offset="75px">
+            <div class="kingster-header-background"></div>
+            <div class="kingster-header-container  kingster-container">
+                <div class="kingster-header-container-inner clearfix">
+                    <div class="kingster-logo  kingster-item-pdlr">
+                        <div class="kingster-logo-inner">
+                            <a class="" href="index.html"><img src="/assets/images/logo.png" alt="" />
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="kingster-navigation kingster-item-pdlr clearfix ">
+                        <div class="kingster-main-menu" id="kingster-main-menu">
+                            <ul id="menu-main-navigation-1" class="sf-menu">
+                                <li class="menu-item menu-item-I current-menu-item kingster-normal-menu"><a href="index.html" class="sf-with-ul-pre">Inicio</a>
+                                    <!-- <ul class="sub-menu">
+                                        <li class="menu-item menu-item-home" data-size="60"><a href="index.html">Homepage 1</a></li>
+                                        <li class="menu-item" data-size="60"><a href="homepage-2.html">Homepage 2</a></li>
+                                    </ul> -->
+                                </li>
+
+                                <li class="menu-item menu-item-has-children kingster-normal-menu"><a  class="sf-with-ul-pre">Identidad</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item" data-size="60"><a [routerLink]="['articulo-vista', '1']">Acta de constitución</a></li>
+                                        <li class="menu-item" data-size="60"><a [routerLink]="['articulo-vista', '9']">Himno del colegio</a></li>
+                                        <li class="menu-item" data-size="60"><a [routerLink]="['articulo-vista', '28']">Primera Junta Directiva</a></li>
+                                        <li class="menu-item" data-size="60"><a [routerLink]="['articulo-vista', '29']">Directiva Actual</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Exalumnos</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item" data-size="60"><a [routerLink]="['articulo-lista', '5']" > Destacados</a></li>
+                                        <li class="menu-item" data-size="60"><a [routerLink]="['promocion']" > Promociones</a></li>
+                                    </ul>
+                                </li>
+
+
+                                <li class="menu-item menu-item-I kingster-normal-menu"><a [routerLink]="['articulo-lista', '4']" class="sf-with-ul-pre">Galeria del Recuerdo</a> </li>
+                                <li class="menu-item menu-item-I kingster-normal-menu"><a [routerLink]="['alumno-nuevo']" class="sf-with-ul-pre" >Contactanos</a></li>
+                            </ul>
+                            <div class="kingster-navigation-slide-bar" id="kingster-navigation-slide-bar"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <router-outlet></router-outlet>

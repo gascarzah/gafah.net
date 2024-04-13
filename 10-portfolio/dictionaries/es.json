@@ -1,0 +1,23 @@
+{
+    "navigation": {
+      "home": "Inicio",
+      "about": "Acerda de",
+      "proyectos": "Proyectos",
+      "contacto": "Contacto"
+      
+    },
+    "page": {
+      "home": {
+        "title": "Bienvenido",
+        "description": "Internacion",
+        "intro": "Hola, Soy ",
+        "especialidad": "Desarrollador Full Stack",
+        "descripcion": "Enfocado en construir aplicativos de gran alcance integrando backend y frontend"
+      },
+      "about": {
+        "title": "Acerca de mi",
+        "description": "Descripcion"
+      }
+    }
+  }
+  

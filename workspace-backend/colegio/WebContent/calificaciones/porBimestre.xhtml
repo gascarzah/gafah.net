@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		
+		<f:event listener="#{matriculaManagedBean.inicializar}" type="preRenderView"></f:event>
+	</f:metadata>
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Registrar Calificacion</title>
+</h:head>
+<h:form>
+	<p:growl id="messages"></p:growl>
+	<div id="registro" align="center">
+		<p:panel header="Registro de matricula" id="panelRegistroMatricula"
+			style=" text-align: left">
+			<p:panelGrid>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Fecha Matricula:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:calendar value="#{matriculaBean.matricula.matriFecha}"></p:calendar>
+					</p:column>
+					<p:column>
+						<p:outputLabel value="Grado:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{matriculaBean.matricula.matriGrado}"></p:inputText>
+					</p:column>
+					<p:column>
+						<p:outputLabel value="Estado:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						
+
+						<p:selectOneMenu id="estados" value="#{matriculaBean.matricula.matriEstado}"
+							required="true">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{matriculaBean.maestras}" var="list"
+								itemLabel="#{list.maesTableId}" itemValue="#{list.maesDesc}" />
+						</p:selectOneMenu>
+
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+
+		<p:panel header="Datos del Alumno" id="panelDatosAlumno"
+			style="text-align: left">
+			<p:panelGrid>
+				<p:row style="align : left">
+					<p:column>
+						<p:outputLabel value="DNI:"></p:outputLabel>
+					</p:column>
+					<p:column colspan="5">
+						<p:inputText value="#{matriculaBean.alumno.alumDni}"></p:inputText>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Nombres:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{matriculaBean.alumno.alumNombre}"></p:inputText>
+					</p:column>
+					<p:column>
+						<p:outputLabel value="Apellido Paterno:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{matriculaBean.alumno.alumApePate}"></p:inputText>
+					</p:column>
+					<p:column>
+						<p:outputLabel value="Apellido Materno:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{matriculaBean.alumno.alumApeMate}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Fecha Nacimiento:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:calendar value="#{matriculaBean.alumno.alumFecNaci}"></p:calendar>
+					</p:column>
+					<p:column>
+						<p:outputLabel value="Direccion:"></p:outputLabel>
+					</p:column>
+					<p:column colspan="3">
+						<p:inputText value="#{matriculaBean.alumno.alumDirec}"
+							style="width :100%"></p:inputText>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Telefono:"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{matriculaBean.alumno.alumTelefono}"></p:inputText>
+					</p:column>
+					<p:column>
+						<p:outputLabel value="Email:"></p:outputLabel>
+					</p:column>
+					<p:column colspan="3">
+						<p:inputText value="#{matriculaBean.alumno.alumEmail}"></p:inputText>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<p:commandButton value="Register" action="#{matriculaBean.salida}"
+				update="messages"></p:commandButton>
+		</p:panel>
+	</div>
+	<p:tabView style="margin-top:20px">
+			
+				<p:tab title="Datos del Padre">
+					<ui:include src="/matricula/registroPadre.xhtml" />
+				</p:tab>
+				
+				<p:tab title="Datos de la Madre">
+					<ui:include src="/matricula/registroMadre.xhtml" />
+				</p:tab>
+				
+				<p:tab title="Observación">
+					<ui:include src="/WEB-INF/template/pedidos/observacionesPedido.xhtml" />
+				</p:tab>
+				
+			</p:tabView>
+</h:form>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/plantillas/cuerpo.xhtml">
+	<ui:define name="renderCenter">
+
+
+		<h:form>
+
+			<div id="registroAlumno" align="center">
+
+				<h:outputLabel value="#{alumnoBean.parametro.dniAlum}" />
+
+				<p:panel header="Buscar Libreta Alumno" id="panelDatosAlumno">
+					<p:panelGrid>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.nivel']}"></h:outputLabel>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="idAulaNivel"
+									value="#{alumnoBean.nivel.maesId}"
+									style="width: 110px !important;" effect="drop">
+									<f:selectItem itemLabel="Seleccione" itemValue="-1"
+										noSelectionOption="true" />
+									<f:selectItems value="#{alumnoBean.niveles}" var="nivel"
+										itemValue="#{nivel.maesId}" itemLabel="#{nivel.valor}" />
+									<p:ajax listener="#{alumnoBean.buscarGrados}"
+										update=":#{p:component('idAulaGrado')}"></p:ajax>
+								</p:selectOneMenu>
+							</p:column>
+							<p:column>
+								<h:outputLabel value="#{msg['global.grado']}"></h:outputLabel>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="idAulaGrado"
+									value="#{alumnoBean.parametro.nivel}" 
+									style="width: 110px !important;" effect="drop">
+									<f:selectItem itemLabel="Seleccione" itemValue="-1"
+										noSelectionOption="true" />
+									<f:selectItems value="#{alumnoBean.grados}" var="grado"
+										itemValue="#{grado.maesId}" itemLabel="#{grado.valor}" />
+								</p:selectOneMenu>
+							</p:column>
+
+							<p:column>
+								<p:commandButton actionListener="#{alumnoBean.buscar()}"
+									icon="ui-icon-search" update=":#{p:component('idDtAlumno')}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:panel>
+			</div>
+
+			<div id="resultadoAlumno" align="center">
+				<p:dataTable id="idDtAlumno" var="obj" paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					value="#{alumnoBean.matriculados}"
+					emptyMessage="No se encontraron registros">
+
+<!-- 					<p:column headerText="Grado" width="4%" style="text-align:center" -->
+<!-- 						sortBy="#{obj.grado}"> -->
+<!-- 						<h:outputText value="#{obj.grado}" /> -->
+<!-- 					</p:column> -->
+
+					<p:column headerText="Dni" width="4%" style="text-align:center"
+						sortBy="#{obj.dni}">
+						<h:outputText value="#{obj.dni}" />
+					</p:column>
+					<p:column headerText="Apellido Paterno" width="4%" style="text-align:center"
+						sortBy="#{obj.apePate}">
+						<h:outputText value="#{obj.apePate}" />
+					</p:column>
+					
+					<p:column headerText="Apellido Materno" width="4%" style="text-align:center"
+						sortBy="#{obj.apeMate}">
+						<h:outputText value="#{obj.apeMate}" />
+					</p:column>
+					
+					<p:column headerText="Nombres" width="4%" style="text-align:center"
+						sortBy="#{obj.nombres}">
+						<h:outputText value="#{obj.nombres}" />
+					</p:column>
+
+<!-- 					<p:column headerText="Nacimiento" width="4%" -->
+<!-- 						style="text-align:center" sortBy="#{obj.fecNaci}"> -->
+<!-- 						<h:outputText value="#{obj.fecNaci}"> -->
+<!-- 							<f:convertDateTime pattern="dd/MM/yyyy" /> -->
+<!-- 						</h:outputText> -->
+<!-- 					</p:column> -->
+
+					<p:column width="4%" style="text-align:center">
+						<p:commandButton id="btnMod1" icon="ui-icon-check"
+							value="ver Libreta"
+							actionListener="#{alumnoBean.irModificar(obj)}"
+							update=":#{p:component('idMantenimientoAlumno')}">
+							
+						</p:commandButton>
+					</p:column>
+<!-- 					<p:column width="4%" style="text-align:center"> -->
+<!-- 						<p:commandButton id="btnPadre" icon="ui-icon-check" -->
+<!-- 							value="Padre" -->
+<!-- 							actionListener="#{alumnoBean.irApoderado(obj)}" -->
+<!-- 							update=":#{p:component('idMantenimientoApoderado')},:#{p:component('idEstadoCivil')}"> -->
+<!-- 							<f:param name="apoderado" value="32"></f:param> -->
+<!-- 						</p:commandButton> -->
+<!-- 					</p:column> -->
+<!-- 					<p:column width="4%" style="text-align:center"> -->
+<!-- 						<p:commandButton id="btnMadre" icon="ui-icon-check" -->
+<!-- 							value="Madre" -->
+<!-- 							actionListener="#{alumnoBean.irApoderado(obj)}" -->
+<!-- 							update=":#{p:component('idMantenimientoApoderado')},:#{p:component('idEstadoCivil')}"> -->
+<!-- 							<f:param name="apoderado" value="33"></f:param> -->
+<!-- 						</p:commandButton> -->
+<!-- 					</p:column> -->
+<!-- 					<p:column width="4%" style="text-align:center"> -->
+<!-- 						<p:commandButton id="btnMod" icon="ui-icon-check" -->
+<!-- 							value="Modificar Matricula" -->
+<!-- 							actionListener="#{alumnoBean.irModificar(obj)}" -->
+<!-- 							update=":#{p:component('idMantenimientoAlumno')}"> -->
+<!-- 							<f:param name="habilitar" value="true"></f:param> -->
+<!-- 						</p:commandButton> -->
+<!-- 					</p:column> -->
+<!-- 					<p:column width="4%" style="text-align:center"> -->
+<!-- 						<p:commandButton id="btnEli" icon="ui-icon-close" value="Eliminar" /> -->
+<!-- 					</p:column> -->
+				</p:dataTable>
+				<br />
+			</div>
+
+
+			<center>
+				<p:commandButton id="btnGrabar1" icon="ui-icon-plus"
+					value="Registrar Matricula" actionListener="#{alumnoBean.agregar}"
+					update=":#{p:component('idMantenimientoAlumno')}, :#{p:component('filaMatricula')}" >
+					<f:param name="habilitar" value="true"></f:param>
+					</p:commandButton>
+				<p:commandButton id="btnGrabar" icon="ui-icon-plus"
+					value="Registrar Alumno" action="#{alumnoBean.agregar}" 
+					update=":#{p:component('idMantenimientoAlumno')}, :#{p:component('filaMatricula')}">
+					<f:param name="habilitar" value="false"></f:param>
+					</p:commandButton>
+			</center>
+		</h:form>
+		
+		<p:dialog id="idMantenimientoAlumno" header="#{alumnoBean.tituloAgregar}"
+			widgetVar="dialogoAgregarAlumno" resizable="true" position="center"
+			draggable="true" width="1050px" height="500px">
+			<ui:include src="#{alumnoBean.manteAlumno}.xhtml" />
+		</p:dialog>
+
+		<p:dialog id="idMantenimientoApoderado" header="#{alumnoBean.tituloAgregar}"
+			widgetVar="dialogoAgregarApoderado" resizable="true" position="center"
+			draggable="true" width="1050px" height="500px">
+			<ui:include src="#{alumnoBean.manteApoderado}.xhtml" />
+		</p:dialog>
+
+	</ui:define>
+
+</ui:composition>

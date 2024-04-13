@@ -1,0 +1,176 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body onload="#{alumnoBean.buscarGrados()}">
+		<h:form id="idRegAlumno">
+			<div id="">
+				<table>
+					<tr>
+
+						<td><p:panelGrid>
+
+								<p:row rendered="#{alumnoBean.filaMatricula}" id="filaMatricula">
+									<p:column>
+										<h:outputLabel value="#{msg['global.nivel']}"></h:outputLabel>
+									</p:column>
+
+
+									<p:column>
+										<p:selectOneMenu id="aulaNivel"
+											value="#{alumnoBean.nivel.maesId}"
+											style="width: 110px !important;" effect="drop">
+											<f:selectItem itemLabel="Seleccione" itemValue="-1"
+												noSelectionOption="true" />
+											<f:selectItems value="#{alumnoBean.niveles}" var="nivel"
+												itemValue="#{nivel.maesId}" itemLabel="#{nivel.valor}" />
+											<p:ajax listener="#{alumnoBean.buscarGrados()}"
+												update=":#{p:component('aulaGrado')}"></p:ajax>
+										</p:selectOneMenu>
+									</p:column>
+									<p:column>
+										<h:outputLabel value="#{msg['global.grado']}"></h:outputLabel>
+									</p:column>
+									<p:column>
+										<p:selectOneMenu id="aulaGrado"
+											value="#{alumnoBean.alumno.nivel}"
+											style="width: 110px !important;" effect="drop">
+											<f:selectItem itemLabel="Seleccione" itemValue="-1"
+												noSelectionOption="true" />
+											<f:selectItems value="#{alumnoBean.grados}" />
+										</p:selectOneMenu>
+									</p:column>
+								</p:row>
+
+								<p:row style="align : left">
+									<p:column>
+										<h:outputLabel value="#{msg['global.dni']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.dniAlum}" style="width: 40%" maxlength="8"></p:inputText>
+										<p:commandButton icon="ui-icon-search" actionListener="#{alumnoBean.buscarDatosAlumno}"
+										update="@form" rendered="#{alumnoBean.filaMatricula}"></p:commandButton>
+									</p:column>
+									<p:column>
+										<h:outputLabel value="#{msg['global.nombres']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.nombres}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<h:outputLabel value="#{msg['global.apepaterno']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.apePate}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+									<p:column>
+										<h:outputLabel value="#{msg['global.apematerno']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.apeMate}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<h:outputLabel value="#{msg['global.fechaNacimiento']}"
+											locale="es" />
+									</p:column>
+									<p:column>
+										<p:calendar value="#{alumnoBean.alumno.fecNaci}" locale="es" readonly="#{alumnoBean.filaMatricula}"
+											pattern="dd/MM/yyyy"></p:calendar>
+									</p:column>
+
+									<p:column>
+										<h:outputLabel value="#{msg['global.telefono']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.telefono}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<h:outputLabel value="Sexo:"></h:outputLabel>
+									</p:column>
+									<p:column>
+										<p:selectOneMenu id="idSexo" value="#{alumnoBean.alumno.sexo}"
+											style="width: 110px !important;" effect="drop">
+											<f:selectItem itemLabel="Seleccione" itemValue="-1"
+												noSelectionOption="true" />
+
+											<f:selectItem itemLabel="HOMBRE" itemValue="23" />
+											<f:selectItem itemLabel="MUJER" itemValue="24" />
+										</p:selectOneMenu>
+
+									</p:column>
+
+									<p:column>
+										<h:outputLabel value="#{msg['global.email']}" />
+									</p:column>
+									<p:column colspan="3">
+										<p:inputText value="#{alumnoBean.alumno.email}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<h:outputLabel value="#{msg['global.direccion']}" />
+									</p:column>
+									<p:column colspan="3">
+										<p:inputText value="#{alumnoBean.alumno.direccion}" readonly="#{alumnoBean.filaMatricula}"
+											style="width :100%"></p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<h:outputLabel value="#{msg['global.telefono.emergencia']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.telefEmergencia}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+
+									<p:column>
+										<h:outputLabel value="#{msg['global.contacto.emergencia']}" />
+									</p:column>
+									<p:column>
+										<p:inputText value="#{alumnoBean.alumno.contactEmergencia}" readonly="#{alumnoBean.filaMatricula}"></p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<h:outputLabel value="#{msg['global.cuenta.seguro']}" />
+									</p:column>
+									<p:column>
+
+										<p:selectOneRadio value="#{alumnoBean.alumno.segEscolar}" readonly="#{alumnoBean.filaMatricula}">
+											<f:selectItem itemLabel="SI" itemValue="1" />
+											<f:selectItem itemLabel="NO" itemValue="0" />
+										</p:selectOneRadio>
+									</p:column>
+								</p:row>
+							</p:panelGrid></td>
+					</tr>
+				</table>
+			</div>
+			<div id="botones" align="center">
+
+				<p:commandButton icon="ui-icon-disk" value="Grabar" 
+					actionListener="#{alumnoBean.grabar}" />
+				<p:commandButton icon="ui-icon-disk" value="Cerrar"
+					action="#{alumnoBean.cerrarDialog}" update=":#{p:component('idDtAlumno')}">
+					<f:param name="cerrar" value="1"></f:param>
+				</p:commandButton>
+			</div>
+		</h:form>
+		
+<!-- 		<p:dialog id="idDatosAlumno" header="#{alumnoBean.tituloAgregar}" -->
+<!-- 			widgetVar="dialogoBuscar" resizable="true" position="center" -->
+<!-- 			draggable="true" width="1050px" height="500px"> -->
+<!-- 			<ui:include src="#{alumnoBean.pbuscarAlumno}.xhtml" /> -->
+<!-- 		</p:dialog> -->
+		
+	</h:body>
+</ui:composition>

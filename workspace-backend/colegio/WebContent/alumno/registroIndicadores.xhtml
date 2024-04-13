@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/plantillas/cuerpo.xhtml">
+	<ui:define name="renderCenter">
+
+
+		<h:form>
+
+			<div id="registroAlumno" align="center">
+
+				<p:panel header="Buscar Indicadores" id="panelIndicadores">
+					<p:panelGrid style="align: left">
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.area']}"></h:outputLabel>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="idArea"
+									value="#{indicadorBean.area.areaId}"
+									style="width: 110px !important;" effect="drop">
+									<f:selectItem itemLabel="Seleccione" itemValue="-1"
+										noSelectionOption="true" />
+									<f:selectItems value="#{indicadorBean.areas}" var="area"
+										itemValue="#{area.areaId}" itemLabel="#{area.curso}" />
+									<p:ajax listener="#{indicadorBean.buscarCapacidad}"
+										update=":#{p:component('idCapacidad')}"></p:ajax>
+								</p:selectOneMenu>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.capacidad']}"></h:outputLabel>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="idCapacidad"
+									value="#{indicadorBean.capacidad.capacidadId}"
+									style="width: 110px !important;" effect="drop">
+									<f:selectItem itemLabel="Seleccione" itemValue="-1"
+										noSelectionOption="true" />
+									<f:selectItems value="#{indicadorBean.capacidades}"
+										var="capacidad" itemValue="#{capacidad.capacidadId}"
+										itemLabel="#{capacidad.descripcion}" />
+									<p:ajax listener="#{indicadorBean.buscarGrado}"
+										update=":#{p:component('idAulaGrado')}"></p:ajax>
+								</p:selectOneMenu>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.grado']}"></h:outputLabel>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="idAulaGrado"
+									value="#{indicadorBean.gradoSec.maesId}"
+									style="width: 110px !important;" effect="drop">
+									<f:selectItem itemLabel="Seleccione" itemValue="-1"
+										noSelectionOption="true" />
+									<f:selectItems value="#{indicadorBean.niveles}" var="grado"
+										itemValue="#{grado.maesId}" itemLabel="#{grado.valor}" />
+								</p:selectOneMenu>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputLabel value="#{msg['global.bimestre']}"></h:outputLabel>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="bimestre" value="#{indicadorBean.bimestre}"
+									style="width: 110px !important;" effect="drop">
+									<f:selectItem itemLabel="Seleccione" itemValue="-1"
+										noSelectionOption="true" />
+									<f:selectItem itemLabel="1" itemValue="41" />
+									<f:selectItem itemLabel="2" itemValue="42" />
+									<f:selectItem itemLabel="3" itemValue="43" />
+									<f:selectItem itemLabel="4" itemValue="44" />
+								</p:selectOneMenu>
+							</p:column>
+							<p:column>
+								<p:commandButton actionListener="#{indicadorBean.buscar()}"
+									icon="ui-icon-search"
+									update=":#{p:component('idListIndicador')}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:panel>
+			</div>
+
+			<div id="resultadoAlumno" align="center">
+				<p:dataTable id="idListIndicador" var="obj" paginator="true"
+					rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					value="#{indicadorBean.notas}" editable="true"
+					emptyMessage="No se encontraron registros">
+
+					<p:ajax event="rowEdit" listener="#{indicadorBean.onRowEdit}"
+						update=":#{p:component('idListIndicador')}" />
+
+					<p:columnGroup type="header"  >
+						<p:row>
+							<p:column rowspan="2" headerText="Alumno" />
+							<p:column colspan="2" headerText="Nota 1" />
+							<p:column colspan="2" headerText="Nota 2" />
+							<p:column colspan="2" headerText="Nota 3" />
+							<p:column colspan="2" headerText="Nota 4" />
+							<p:column colspan="2" headerText="Promedio Final" />
+						</p:row>
+
+						<p:row>
+
+							<p:column headerText="Número" />
+							<p:column headerText="Letra" />
+							<p:column headerText="Número" />
+							<p:column headerText="Letra" />
+							<p:column headerText="Número" />
+							<p:column headerText="Letra" />
+							<p:column headerText="Número" />
+							<p:column headerText="Letra" />
+							<p:column headerText="Número" />
+							<p:column headerText="Letra" />
+						</p:row>
+					</p:columnGroup>
+
+					<p:column headerText="Alumno" width="4%" style="text-align:center"
+						sortBy="#{obj.alumno}">
+						<h:outputText value="#{obj.alumno}" />
+					</p:column>
+
+
+
+					<p:column headerText="Nota 1" width="4%" style="text-align:center">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{obj.nota11}"
+									style="#{obj.nota11 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}" />
+
+								<h:outputText value="#{obj.nota12}"
+									style="#{obj.nota12 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}" />
+								<h:outputText value="#{obj.nota13}"
+									style="#{obj.nota13 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}" />
+								<h:outputText value="#{obj.nota14}"
+									style="#{obj.nota14 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{obj.nota11}"
+									style="#{obj.nota11 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota12}"
+									style="#{obj.nota12 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota13}"
+									style="#{obj.nota13 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota14}"
+									style="#{obj.nota14 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}">
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="" width="4%">
+						<h:outputText value="#{obj.letraNota11}"
+							style="#{obj.nota11 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 41}" />
+						<h:outputText value="#{obj.letraNota12}"
+							style="#{obj.nota12 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 42}" />
+						<h:outputText value="#{obj.letraNota13}"
+							style="#{obj.nota13 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 43}" />
+						<h:outputText value="#{obj.letraNota14}"
+							style="#{obj.nota14 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 44}" />
+					</p:column>
+
+
+					<p:column headerText="Nota 2" width="4%" style="text-align:center">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{obj.nota21}"
+									style="#{obj.nota21 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}" />
+								<h:outputText value="#{obj.nota22}"
+									style="#{obj.nota22 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}" />
+								<h:outputText value="#{obj.nota23}"
+									style="#{obj.nota23 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}" />
+								<h:outputText value="#{obj.nota24}"
+									style="#{obj.nota24 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{obj.nota21}"
+									style="#{obj.nota21 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota22}"
+									style="#{obj.nota22 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota23}"
+									style="#{obj.nota23 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota24}"
+									style="#{obj.nota24 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}">
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="" width="4%">
+
+						<h:outputText value="#{obj.letraNota21}"
+							style="#{obj.nota21 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 41}" />
+						<h:outputText value="#{obj.letraNota22}"
+							style="#{obj.nota22 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 42}" />
+						<h:outputText value="#{obj.letraNota23}"
+							style="#{obj.nota23 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 43}" />
+						<h:outputText value="#{obj.letraNota24}"
+							style="#{obj.nota24 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 44}" />
+
+					</p:column>
+
+					<p:column headerText="Nota 3" width="4%" style="text-align:center">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{obj.nota31}"
+									style="#{obj.nota31 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}" />
+								<h:outputText value="#{obj.nota32}"
+									style="#{obj.nota32 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}" />
+								<h:outputText value="#{obj.nota33}"
+									style="#{obj.nota33 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}" />
+								<h:outputText value="#{obj.nota34}"
+									style="#{obj.nota34 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}" />
+
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{obj.nota31}"
+									style="#{obj.nota31 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota32}"
+									style="#{obj.nota32 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota33}"
+									style="#{obj.nota33 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota34}"
+									style="#{obj.nota34 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}">
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="" width="4%" style="text-align:center">
+						<h:outputText value="#{obj.letraNota31}"
+							style="#{obj.nota31 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 41}" />
+						<h:outputText value="#{obj.letraNota32}"
+							style="#{obj.nota32 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 42}" />
+						<h:outputText value="#{obj.letraNota33}"
+							style="#{obj.nota33 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 43}" />
+						<h:outputText value="#{obj.letraNota34}"
+							style="#{obj.nota34 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 44}" />
+					</p:column>
+
+					<p:column headerText="Nota 4" width="4%" style="text-align:center">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{obj.nota41}"
+									style="#{obj.nota41 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}" />
+								<h:outputText value="#{obj.nota42}"
+									style="#{obj.nota42 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}" />
+								<h:outputText value="#{obj.nota43}"
+									style="#{obj.nota43 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}" />
+								<h:outputText value="#{obj.nota44}"
+									style="#{obj.nota44 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}" />
+
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{obj.nota41}"
+									style="#{obj.nota41 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 41}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota42}"
+									style="#{obj.nota42 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 42}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota43}"
+									style="#{obj.nota43 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 43}">
+								</p:inputText>
+								<p:inputText value="#{obj.nota44}"
+									style="#{obj.nota44 &gt; 10 ? 'color:blue' : 'color:red'}"
+									rendered="#{indicadorBean.bimestre == 44}">
+<!-- 									<p:ajax listener="#{indicadorBean.calcularPromedioFinal(obj)}" -->
+<!-- 										update=":#{p:component('letraNota44')}"></p:ajax> -->
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="" width="4%" style="text-align:center">
+						<h:outputText value="#{obj.letraNota41}"
+							style="#{obj.nota41 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 41}" />
+						<h:outputText value="#{obj.letraNota42}"
+							style="#{obj.nota42 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 42}" />
+						<h:outputText value="#{obj.letraNota43}"
+							style="#{obj.nota43 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 43}" />
+						<h:outputText value="#{obj.letraNota44}" id="letraNota44"
+							style="#{obj.nota44 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 44}" />
+					</p:column>
+					
+					<p:column headerText="Promedio Final" width="4%"
+						style="text-align:center" id="promFinal">
+						<h:outputText value="#{obj.promFinal1}"
+							style="#{obj.promFinal1 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 41}" />
+						<h:outputText value="#{obj.promFinal2}"
+							style="#{obj.promFinal2 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 42}" />
+						<h:outputText value="#{obj.promFinal3}"
+							style="#{obj.promFinal3 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 43}" />
+						<h:outputText value="#{obj.promFinal4}"
+							style="#{obj.promFinal4 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 44}" />
+					</p:column>
+
+					<p:column headerText="" width="4%" style="text-align:center"
+						id="letraPromFinal">
+						<h:outputText value="#{obj.letraPromFinal1}"
+							style="#{obj.promFinal1 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 41}" />
+						<h:outputText value="#{obj.letraPromFinal2}"
+							style="#{obj.promFinal2 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 42}" />
+						<h:outputText value="#{obj.letraPromFinal3}"
+							style="#{obj.promFinal3 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 43}" />
+						<h:outputText value="#{obj.letraPromFinal4}"
+							style="#{obj.promFinal4 &gt; 10 ? 'color:blue' : 'color:red'}"
+							rendered="#{indicadorBean.bimestre == 44}" />
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:rowEditor />
+					</p:column>
+				</p:dataTable>
+				<br />
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

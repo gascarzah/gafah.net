@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title><ui:insert name="titulo">Sistema Colegio</ui:insert></title>
+	<h:outputStylesheet library="css" name="sistema.css" />
+	<h:outputScript library="js" name="jquery.maskMoney.js"></h:outputScript>
+</h:head>
+<h:body>
+
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="images" name="ajax-loader.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header>
+		<div>
+			<h:link>
+				<h:graphicImage library="images" name="logo.png" />
+			</h:link>
+		</div>
+	</header>
+
+	<div id="contenedor">
+		<ui:insert name="cuerpo" />
+	</div>
+	
+	<p:separator style="margin-top:20px" />
+	
+	<footer>
+		Sistema de Pedido de Ventas - 2014, <a href="http://www.joedayz.pe" target="_blank">www.joedayz.pe</a> 
+	</footer>
+	
+	<script>
+		function configurarMoneda(){
+			$(".moneda").maskMoney({thousands:',', decimal:'.', allowZero:true});
+		}
+		
+		$(document).ready(function(){
+			configurarMoneda();
+		})
+		
+	</script>
+
+</h:body>
+</html>

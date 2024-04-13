@@ -1,0 +1,170 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body >
+	<h:form id="idRegApoderado">
+
+	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<h:outputLabel value="#{msg['global.dni']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.dniApod}"></p:inputText>
+				<p:commandButton icon="ui-icon-search" actionListener="#{alumnoBean.buscarApoderado}" update="idRegApoderado"></p:commandButton>
+			</p:column>
+			<p:column>
+				<h:outputLabel value="#{msg['global.nombres']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.nombres}"></p:inputText>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputLabel value="#{msg['global.apepaterno']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.apePate}"></p:inputText>
+			</p:column>
+			<p:column>
+				<h:outputLabel value="#{msg['global.apematerno']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.apeMate}"></p:inputText>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputLabel value="#{msg['global.fechaNacimiento']}" locale="es"
+					pattern="dd/MM/yyyy" />
+			</p:column>
+			<p:column>
+				<p:calendar value="#{alumnoBean.apoderado.fecNaci}"></p:calendar>
+			</p:column>
+
+			<p:column>
+				<h:outputLabel value="#{msg['global.telefono']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.telefono}"></p:inputText>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputLabel value="#{msg['global.celular']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.telefono}"></p:inputText>
+			</p:column>
+
+
+			<p:column>
+				<h:outputLabel value="#{msg['global.estado.civil']}" />
+			</p:column>
+		
+			<p:column>
+				<p:selectOneMenu id="idEstadoCivil"
+					value="#{alumnoBean.apoderado.estadoCivil}"
+					style="width: 110px !important;" effect="drop">
+					<f:selectItem itemLabel="Seleccione" itemValue="-1"
+						noSelectionOption="true" />
+					<f:selectItems value="#{alumnoBean.estadoCivil}" var="nivel"
+						itemValue="#{nivel.maesId}" itemLabel="#{nivel.valor}" />
+				</p:selectOneMenu>
+			</p:column>
+
+		</p:row>
+
+		<p:row>
+			<p:column>
+				<h:outputLabel value="#{msg['global.email']}" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.email}"></p:inputText>
+			</p:column>
+
+			<p:column>
+				<h:outputLabel value="#{msg['global.vive.con.hijo']}" />
+			</p:column>
+			<p:column>
+				<p:selectOneRadio value="#{alumnoBean.apoderado.viveConHijo}">
+					<f:selectItem itemLabel="SI" itemValue="1" />
+					<f:selectItem itemLabel="NO" itemValue="0" />
+				</p:selectOneRadio>
+			</p:column>
+		</p:row>
+
+		<p:row>
+			<p:column>
+				<h:outputLabel value="#{msg['global.direccion']}" />
+			</p:column>
+			<p:column colspan="3">
+				<p:inputText value="#{alumnoBean.apoderado.direccion}"
+					style="width :100%"></p:inputText>
+			</p:column>
+		</p:row>
+
+
+		<p:row>
+			<p:column>
+				<h:outputLabel value="Ocupacion Actual" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.ocupacion}"></p:inputText>
+			</p:column>
+
+
+			<p:column>
+				<h:outputLabel value="Centro de trabajo" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.centroTrabajo}"></p:inputText>
+			</p:column>
+		</p:row>
+
+		<p:row>
+			<p:column>
+				<h:outputLabel value="Correo de trabajo" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.emailTrabajo}"></p:inputText>
+			</p:column>
+
+
+			<p:column>
+				<h:outputLabel value="Telefono de trabajo" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{alumnoBean.apoderado.telefTrabajo}"></p:inputText>
+			</p:column>
+		</p:row>
+
+		<p:row>
+			<p:column>
+				<h:outputLabel value="Direccion de trabajo" />
+			</p:column>
+			<p:column colspan="3">
+				<p:inputText value="#{alumnoBean.apoderado.direcTrabajo}"
+					style="width :100%"></p:inputText>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+
+<br />
+<div id="botones" align="center">
+
+	<p:commandButton icon="ui-icon-disk" value="Grabar"
+		actionListener="#{alumnoBean.grabarApoderado}" />
+	<p:commandButton icon="ui-icon-disk" value="Cerrar"
+		action="#{alumnoBean.cerrarDialog}" >
+		<f:param name="cerrar" value="2"></f:param>
+		</p:commandButton>
+</div>
+		</h:form>
+	</h:body>
+</ui:composition>

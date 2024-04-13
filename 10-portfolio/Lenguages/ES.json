@@ -1,0 +1,247 @@
+{
+  "Menu": {
+    "aboutme": "¿Quién soy?",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "FS": {
+    "title": "Ing. Sergio Mercado",
+    "rol": {
+      "dev": "Desarrollador Web",
+      "ing": "Ingeniero de Sistemas"
+    },
+    "content": "Soy Sergio Mercado, <b>Ingeniero de Sistemas</b> con un nivel de <b>inglés B2</b>, me dedico al <b>desarrollo web</b> enfocado en las buenas prácticas y metodologías ágiles para brindar resultados de calidad.",
+    "button": "Descargar CV",
+    "document": "Ing_Sergio_Mercado_CV"
+  },
+  "AM": {
+    "title": "Sobre mi",
+    "content_One": "Hola, soy Sergio Mercado Galarza, tengo 26 años y soy de Bolivia, estudié <b class='bg_text bg_yellow'>Ingeniería en Sistemas</b> en la Universidad Privada Domingo Savio y también <b class='bg_text bg_purple'>Inglés</b> en el Centro Boliviano Americano (CBA).",
+    "content_Two": "A lo largo de los años he trabajado con diferentes tecnologías, la mayoría en proyectos personales monetizados, también trabajé haciendo <b class='text_line_bottom'>SEO para blogs</b> y canales de Youtube.",
+    "content_Three": "Una de mis mayores metas es poder dedicarme a tiempo completo a mi más grande pasión, el <b class='bg_text bg_red'>'Desarrollo Web'</b>."
+  },
+  "SK": {
+    "title": "Habilidades",
+    "bd": "Base de datos",
+    "tools": "Otras Herramientas",
+    "english": "Inglés B2"
+  },
+  "PJS": {
+    "title": "Proyectos",
+    "projects": [
+      {
+        "title": "TheMovie",
+        "content": "Página web de películas y series, así como las tendencias en ambas secciones.",
+        "img": "/projects/themovie.webp",
+        "tecnology": ["React", "Sass"],
+        "tag": ["react", "sass"],
+        "icon": "tv",
+        "link": "https://themovie-draquio.vercel.app/"
+      },
+      {
+        "title": "Prueba técnica - Productos",
+        "content": "Página web de prueba técnica de una tienda para registro de venta de productos.",
+        "img": "/projects/pruebatecnica1.webp",
+        "tecnology": ["React", "Sass", "LocalStorage"],
+        "tag": ["react", "sass" ,"localstorage"],
+        "icon": "shopping basket",
+        "link": "https://prueba-tecnica-tienda-draquio.vercel.app/"
+      },
+      {
+        "title": "GifApp",
+        "content": "Página web de Gifs mediante una API con buscador",
+        "img": "/projects/thegifs.webp",
+        "tecnology": ["Angular", "LocalStorage"],
+        "tag": ["angular", "localstorage"],
+        "icon": "folder open",
+        "link": "https://gifs-draquio.vercel.app/"
+      },
+      {
+        "title": "DescargaVideos",
+        "content": "Descarga videos totalmente gratis de Youtube y Tiktok",
+        "img": "/projects/descargavideos.webp",
+        "tecnology": ["React", "TypeScript", "Sass"],
+        "tag": ["react", "typescript", "sass"],
+        "icon": "cloud download",
+        "link": "https://descargavideos.vercel.app/"
+      },
+      {
+        "title": "Generador de QR",
+        "content": "Genera y descargar QRs como imagen fácilmente para Whatsapp, URLs, Wifi, Email, etc",
+        "img": "/projects/qrgeneratorweb.webp",
+        "tecnology": ["React", "Redux Toolkit", "Sass"],
+        "tag": ["react", "redux", "sass"],
+        "icon": "qrcode",
+        "link": "https://qrg.draquio.vercel.app/"
+      },
+      {
+        "title": "TheStore - Tienda en Linea",
+        "content": "Tienda en linea con LocalStorage y useContext",
+        "img": "/projects/thestore.webp",
+        "tecnology": ["React", "Sass", "LocalStorage"],
+        "tag": ["react", "sass", "localstorage"],
+        "icon": "shopping cart",
+        "link": "https://thestoreweb.vercel.app/"
+      },
+      {
+        "title": "Traductor",
+        "content": "Traductor de varios idiomas",
+        "img": "/projects/traductor.webp",
+        "tecnology": ["React", "TypeScript", "Sass"],
+        "tag": ["react", "typescript", "sass"],
+        "icon": "translate",
+        "link": "https://traductor-bice.vercel.app/"
+      },
+      {
+        "title": "ThePics",
+        "content": "Página web de galería de imágenes",
+        "img": "/projects/thepics.webp",
+        "tecnology": ["React", "Typescript", "Sass"],
+        "tag": ["react", "typescript", "sass"],
+        "icon": "image",
+        "link": "https://thepics-draquio.vercel.app/"
+      },
+      {
+        "title": "Blog React - Node",
+        "content": "Un blog con Front y Backend creado con el MERN stack.",
+        "img": "/projects/reactblog.webp",
+        "tecnology": ["React", "Node", "Sass"],
+        "tag": ["react", "node", "sass"],
+        "icon": "blogger",
+        "link": "https://draquioblog.vercel.app/"
+      },
+      {
+        "title": "Portfolio personal",
+        "content": "Portfolio personal realizado con React y Redux Toolkit",
+        "img": "/projects/draquio-portfolio.webp",
+        "tecnology": ["React", "Redux Toolkit", "Sass"],
+        "tag": ["react", "redux", "sass"],
+        "icon": "address card",
+        "link": "https://draquioportfolio.vercel.app/"
+      },
+      {
+        "title": "DameFans",
+        "content": "DameFans fue una web de intercambios sociales con +120k Usuarios y +1 millón de visitas/mes",
+        "img": "/projects/damefans.webp",
+        "tecnology": ["Php"],
+        "tag": ["php"],
+        "icon": "fire",
+        "link": "https://web.archive.org/web/20190914214728/https://damefans.com/"
+      },
+      {
+        "title": "Draquio Blog Wordpress",
+        "content": "Blog realizado con Wordpress con SEO realizado para posicionar en ciertas palabras clave",
+        "img": "/projects/blog-wordpress.webp",
+        "tecnology": ["Wordpress"],
+        "tag": ["wordpress"],
+        "icon": "microphone",
+        "link": "https://www.draquio.com/"
+      }
+    ],
+    "demo": "Ver demo"
+  },
+  "CF": {
+    "title": "Formulario de contacto",
+    "name": "Tu nombre",
+    "mail": "tucorreo@mail.com",
+    "content": "Quiero hablar contigo",
+    "info": "Háblame directamente a mi correo:",
+    "email": "draquio@gmail.com",
+    "button": "Enviar"
+  },
+  "SKILLS": {
+    "Frontend": [
+      {
+        "skill": "HTML5",
+        "icon": "/tecnologies/html.png"
+      },
+      {
+        "skill": "CSS3",
+        "icon": "/tecnologies/css.png"
+      },
+      {
+        "skill": "JavaScript",
+        "icon": "/tecnologies/javascript.png"
+      },
+      {
+        "skill": "React",
+        "icon": "/tecnologies/react.png"
+      },
+      {
+        "skill": "TypeScript",
+        "icon": "/tecnologies/typescript.png"
+      },
+      {
+        "skill": "Angular",
+        "icon": "/tecnologies/angular.png"
+      },
+      {
+        "skill": "Redux",
+        "icon": "/tecnologies/redux.png"
+      },
+      {
+        "skill": "Tailwind",
+        "icon": "/tecnologies/tailwind.png"
+      },
+      {
+        "skill": "Bootstrap",
+        "icon": "/tecnologies/bootstrap.png"
+      },
+      {
+        "skill": "Sass",
+        "icon": "/tecnologies/sass.png"
+      }
+    ],
+    "Backend":[
+      {
+        "skill": "PHP",
+        "icon": "/tecnologies/php.png"
+      },
+      {
+        "skill": "NodeJs",
+        "icon": "/tecnologies/node-js.png"
+      },
+      {
+        "skill": "Python",
+        "icon": "/tecnologies/python.png"
+      }
+    ],
+    "DB":[
+      {
+        "skill": "MongoDB",
+        "icon": "/tecnologies/mongodb.png"
+      },
+      {
+        "skill": "MySQL",
+        "icon": "/tecnologies/mysql.png"
+      },
+      {
+        "skill": "SQLServer",
+        "icon": "/tecnologies/sql-server.png"
+      }
+    ],
+    "Others":[
+      {
+        "skill": "Git",
+        "icon": "/tecnologies/git.png"
+      },
+      {
+        "skill": "SEO",
+        "icon": "/tecnologies/seo.png"
+      },
+      {
+        "skill": "Wordpress",
+        "icon": "/tecnologies/wordpress.png"
+      },
+      {
+        "skill": "Photoshop",
+        "icon": "/tecnologies/photoshop.png"
+      },
+      {
+        "skill": "Inglés B2",
+        "icon": "/tecnologies/english.png"
+      }
+    ]
+  }
+}

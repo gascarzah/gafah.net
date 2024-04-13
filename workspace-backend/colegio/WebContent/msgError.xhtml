@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/plantillas/cuerpo.xhtml">
+
+	<ui:define name="renderCenter">
+
+		<style type="text/css">
+/*.ui-widget input{font-size:90% !important;  font-weight:normal !important;}*/
+.ui-selectonemenu {
+	width: 80% !important;
+	font-size: 90% !important;
+}
+
+.ui-selectonemenu-item {
+	font-size: 75% !important;
+} 
+</style>
+
+
+		<style type="text/css">
+.label {
+	font-weight: normal;
+	font-size: 10pt;
+	font-family: Tahoma;
+	color: #2779AA;
+	font-weight:bold;
+}
+</style>
+
+
+ <script type="text/javascript">
+     function redireccionar() {
+	    setTimeout("window.location='#{facesContext.externalContext.requestContextPath}/index.xhtml';", 10000);	  /*10 segundos de espera*/  
+	  }  
+</script>
+
+
+<h:body onload="redireccionar()">
+		<h:form id="frmError">
+			<p:panel id="basic" header="Página no disponible" style="margin-bottom:20px">
+				<table width="100%" border="0">
+					<tbody>
+						<tr>
+							<td width="43">&nbsp;</td>
+							<td width="337">&nbsp;</td>
+							<td width="678">&nbsp;</td>
+							<td width="230">&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="21">&nbsp;</td>
+							<td rowspan="4" align="right" valign="middle">
+							<p:graphicImage value="/recursos/imagenes/icon-sms-error.png" width="119" height="120" style="border-width: 0px;" />
+                            </td>
+							<td align="center" valign="middle" class="label">&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="28">&nbsp;</td>
+							<td align="center" valign="middle" class="label">La página
+								que Ud. desea consultar no existe o no se encuentra disponible
+							en éste momento.</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="26">&nbsp;</td>
+							<td align="center" valign="middle"><span class="label">Por favor,
+							intentelo mas tarde.</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr> 
+							<td height="52">&nbsp;</td>
+							<td align="center" valign="middle">
+							   <p:commandButton onclick="window.location='#{facesContext.externalContext.requestContextPath}/index.xhtml';" icon="ui-icon-home" value="Inicio"/>
+							 </td>
+							<td>&nbsp;</td> 
+						</tr>  
+					</tbody>
+				</table>
+
+			</p:panel>
+
+		</h:form>
+		
+</h:body>
+
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Inicio",
+      "about": "About",
+      "proyectos": "Projects",
+      "contacto": "Contact"
+    },
+    "page": {
+      "home": {
+        "title": "Welcome",
+        "description": "Internacion",
+        "intro": "Hi, I'm ",
+        "especialidad": "Full Stack Developer",
+        "descripcion": "I’m focused on building responsive front-end web applications integrating back-end technologies."
+      },
+      "about": {
+        "title": "Acerca de mi",
+        "description": "Descripcion"
+      }
+    }
+  }
+  

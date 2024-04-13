@@ -1,0 +1,62 @@
+/* Sobrescribiendo la lib de los siguientes componentes
+   Diseño de datable - panel grid - paginación */
+.ui-panel .ui-panel-content{border:8;background:0;padding:.2em 1em;background-color: white;}
+.ui-paginator{margin:0;text-align:center;padding:8px;font-size: 7pt;}
+.ui-datatable .ui-paginator,.ui-datatable .ui-paginator{padding:0px;border-color: #F2F5F7;}
+.ui-datatable-scrollable-header,.ui-datatable-scrollable-footer {overflow: hidden;border: 0 none;}
+.ui-datatable-scrollable-body:hover,.ui-datatable-scrollable-body:active,.ui-datatable-scrollable-body:FOCUS{outline: none !important;}
+.ui-datatable-odd {background: #ffffff;}
+.ui-datatable-even {background: #F2F5F9;}
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {padding: 2px !important;font-size: 11px !important;margin: 1px !important;}
+.ui-datatable tbody td {font-size: 10px !important;}
+.ui-datatable thead th {height: 0px !important;padding: 0px !important;margin: 0px !important;}
+.top-aligned-columns td {vertical-align: top;}		
+.ui-panelgrid .ui-panelgrid-cell {background-color: White;}			
+
+/* Paneles de pantallas P:Panel */
+.panelBusqueda{
+	margin-top:0%;
+	border:1px solid #59A8D7;
+	position:relative;
+	/*border-radius: 5px;*/
+}
+.letraPanelBusqueda{
+	color: white;
+	padding-left: 10px;
+	text-transform: uppercase;
+	font-size: 8pt;
+	font-weight: bold;"
+}
+.ovaladoFondoPanel{
+	background-color: #55A3D4;;
+	/*background-color: #55A3D4;border-radius: 5px;*/
+	
+}
+.labelFormulario {
+			color: #2779AA;
+			font-size: 8pt;
+}
+.letraResulFormulario{
+	color:#236CA3;
+	font-weight: bold;
+	font-size: 9px;
+}
+
+.letraroja
+{
+	color:#BE0715;
+	font-weight: bold;
+}
+
+.letraOpaca{
+	color:#7A7A7A;
+	font-size: 12px;
+	font-style: oblique;
+	font-family: cursive;
+}
+.tooltipcolor{
+	font-size: 12px;
+	font-style: oblique;
+	font-family: cursive;
+
+}

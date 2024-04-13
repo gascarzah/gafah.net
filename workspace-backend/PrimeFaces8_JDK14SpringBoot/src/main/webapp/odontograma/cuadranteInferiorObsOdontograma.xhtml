@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+		<style type="text/css">
+                 .ui-widget input{font-size:80% !important;  font-weight:normal !important;}  
+                 .ui-selectonemenu{width: 80% !important; font-size:10px !important;} 
+                 .ui-datepicker{font-size:11px!important;}     				 
+    </style>
+
+					<table>	
+						<tr>
+							<td>
+								<table>
+								 <tr align="center">
+									<td align="center" ></td>
+									<td style="width: 10px;"></td>
+									<td align="center" ></td>
+									<td style="width: 10px;"></td>
+									<td align="center" > </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="8.5" name="8.5" value="#{request.getAttribute('8.5')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="8.4" name="8.4" value="#{request.getAttribute('8.4')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="8.3" name="8.3" value="#{request.getAttribute('8.3')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="8.2" name="8.2" value="#{request.getAttribute('8.2')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="8.1" name="8.1" value="#{request.getAttribute('8.1')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+								  </tr>				
+								  <tr align="center">
+									<td align="center" ><input type="text" id="4.8" name="4.8" value="#{request.getAttribute('4.8')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.7" name="4.7" value="#{request.getAttribute('4.7')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.6" name="4.6" value="#{request.getAttribute('4.6')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.5" name="4.5" value="#{request.getAttribute('4.5')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.4" name="4.4" value="#{request.getAttribute('4.4')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.3" name="4.3" value="#{request.getAttribute('4.3')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.2" name="4.2" value="#{request.getAttribute('4.2')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="4.1" name="4.1" value="#{request.getAttribute('4.1')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+								  </tr>
+								 
+								</table>
+							</td>
+							<td style="width: 22px;"></td>
+							<td>
+								<table>
+								 <tr align="center">
+									<td align="center" ><input type="text" id="7.1" name="7.1" value="#{request.getAttribute('7.1')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="7.2" name="7.2" value="#{request.getAttribute('7.2')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="7.3" name="7.3" value="#{request.getAttribute('7.3')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="7.4" name="7.4" value="#{request.getAttribute('7.4')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="7.5" name="7.5" value="#{request.getAttribute('7.5')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" > </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ></td>
+									<td style="width: 10px;"></td>
+									<td align="center" ></td>
+								  </tr>				
+								  <tr>
+									<td align="center" ><input type="text" id="3.1" name="3.1" value="#{request.getAttribute('3.1')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.2" name="3.2" value="#{request.getAttribute('3.2')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.3" name="3.3" value="#{request.getAttribute('3.3')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.4" name="3.4" value="#{request.getAttribute('3.4')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.5" name="3.5" value="#{request.getAttribute('3.5')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.6" name="3.6" value="#{request.getAttribute('3.6')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.7" name="3.7" value="#{request.getAttribute('3.7')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+									<td style="width: 10px;"></td>
+									<td align="center" ><input type="text" id="3.8" name="3.8" value="#{request.getAttribute('3.8')}"  style="width: 28px; text-transform:uppercase;" maxlength="3" onkeypress="return validaDescOdon(event)" onblur="value=value.toUpperCase()" /> </td>
+						  		  </tr>
+								</table>
+							
+							</td>
+			</tr>
+		</table>
+		
+		</ui:composition>

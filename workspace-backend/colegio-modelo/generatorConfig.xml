@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+
+<!-- Ubicación del JAR JDBC del gestor de Base de datos a usar, en este caso MySQL  -->  
+  <classPathEntry location="C:\Users\Usuario\Documents\lib\mysql-connector-java-5.1.21.jar" /> 
+
+  <context id="context1" targetRuntime="MyBatis3">
+  
+   <!-- No generamos los comentarios -->  
+    <commentGenerator>  
+      <property name="suppressAllComments" value="true"/>  
+    </commentGenerator>  
+  
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+    connectionURL="jdbc:mysql://localhost:3306/colegio" 
+    userId="root" 
+    password="" />
+    
+    <javaModelGenerator targetPackage="pe.gafahsoft.colegio.modelo" targetProject="colegio-modelo">
+    	<property name="enableSubPackages" value="true" />  
+    </javaModelGenerator>
+    
+<!--     <sqlMapGenerator targetPackage="pe.gafahsoft.colegio.mapper" targetProject="colegio"> -->
+<!--     	<property name="enableSubPackages" value="true" /> -->
+<!--     </sqlMapGenerator> -->
+    
+<!--     <javaClientGenerator targetPackage="pe.gafahsoft.colegio.mapper" targetProject="colegio" type="XMLMAPPER"> -->
+<!--     	<property name="enableSubPackages" value="true" /> -->
+<!--     </javaClientGenerator> -->
+    
+    <table tableName="%" enableCountByExample="false" enableDeleteByExample="false"   
+           enableUpdateByExample="false" selectByPrimaryKeyQueryId="false"   
+           selectByExampleQueryId="false" enableSelectByExample="false" modelType="flat" schema="colegio" >  
+	</table>
+	
+  </context>
+</generatorConfiguration>

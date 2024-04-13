@@ -1,0 +1,509 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+		<style type="text/css">
+                 .ui-widget input{font-size:80% !important;  font-weight:normal !important;}  
+                 .ui-selectonemenu{width: 80% !important; font-size:10px !important;} 
+                 .ui-datepicker{font-size:11px!important;}     				 
+    </style>
+    
+<style type="text/css">
+.label {
+	color: #2779AA;
+	font-size: 9pt;
+}
+
+.table {
+	font: normal;
+	border-width: 1px;
+	border-style: solid;
+	color: rgb(92, 92, 92);
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 9pt;
+	font-family: Tahoma;
+	background-color: White;
+	border-top-color: #B0C4DE;
+	border-right-color: #B0C4DE;
+	border-bottom-color: #B0C4DE;
+	border-left-color: #B0C4DE;
+	border-color: #B0C4DE;
+	border-radius: 5px;
+}
+</style>
+<script>
+
+var sPiezaMarcada = "#{mBOdontograma.sPiezaMarcada}";
+var sCaraMarcada = "#{mBOdontograma.sCaraMarcada}";
+var sColorMarcada = "#{mBOdontograma.sColorMarcada}";
+var sPiezaMarcadaInicial = "#{mBOdontograma.sPiezaMarcadaInicial}";
+var sCaraMarcadaInicial = "#{mBOdontograma.sCaraMarcadaInicial}";
+var sColorMarcadaInicial = "#{mBOdontograma.sColorMarcadaInicial}";
+
+</script>
+		<meta http-equiv="Expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+
+
+
+		<!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       	More info: h5bp.com/b/378 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+		<!-- CSS: implied media=all -->
+		<!-- CSS concatenated and minified via ant build script-->
+		<!--   <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/css/style.css"/> -->
+		<!--   <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/css/jquery-ui-1.8.17.custom.css"/> -->
+		<link rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/jquery.svg.css" />
+		<link rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/odontograma.css" />
+		<!-- end CSS-->
+
+		<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/modernizr-2.0.6.min.js"></script>
+		<!-- scripts concatenated and minified via ant build script-->
+
+	
+<h:body>	
+<!-- 	<h:form> -->
+
+
+		<div id="container">
+
+
+			<div id="main2">
+				
+				<div id="odontograma-wrapper">
+
+					<div id="odontograma"></div>
+				</div>
+			</div>
+
+			<div id="tratamiento">
+			
+			<table>
+				<tr>
+					<td valign="top" >
+						<table cellspacing="0" >
+							<tr>
+<!-- 								<td bgcolor="#E0EEF7"></td> -->
+								<td colspan="3" align="center" bgcolor="#E0EEF7" ><font color="#2779AA" style="font-weight: bold;"> Opciones</font></td>
+								
+								<td bgcolor="#E0EEF7" align="center" width="100px"><font color="#2779AA" style="font-weight: bold;">Permanentes</font></td>
+							  <td bgcolor="#E0EEF7" align="center" width="100px"><font color="#2779AA" style="font-weight: bold;">Deciduas</font></td>
+							</tr>
+							<tr id='colores1'>
+								<td id='radiocell1'><input type='radio' name="color" value='Y'></input></td>
+<!-- 								<td align="center"> -->
+<!-- 								<td style="background-color: yellow; width: 50px; border: black 1px solid" > -->
+<!-- 								<p:graphicImage value="/resources/imagenes/porextraer.png" style="width:22px" /> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: #f4dde8; width: 4px; border: black 1px solid" /> </td>
+<!-- 								</td> -->
+								<td>Por Extraer</td>
+								<td align="center"><div id="perPorExtraer"/> </td>
+							  	<td align="center"><div id="resPorExtraer"/></td>
+							</tr>
+							<tr id='colores2'>
+								<td id='radiocell2'><input type='radio' name="color" value='O'></input></td>
+<!-- 								<td style="background-color: orange; width: 50px; border: black 1px solid" ></td> -->
+<!-- 								<td align="center"><p:graphicImage value="/resources/imagenes/protesis.png" style="width:22px" /></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: #D3D3D3; width: 4px; border: black 1px solid" /> </td>
+								<td>Protesis</td>
+								<td align="center"><div id="perProtesis"/> </td>
+							    <td align="center"><div id="resProtesis"/></td>
+							</tr>
+							<tr id='colores3'>
+								<td id='radiocell3'><input type='radio' name="color" value='D'></input></td>
+<!-- 								<td style="background-color: black; width: 50px; border: black 1px solid" ></td> -->
+<!-- 								<td align="center"><p:graphicImage value="/resources/imagenes/perdida.png" style="width:22px" /></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: black; width: 4px; border: black 1px solid" /> </td>
+<!-- 								<td>Perdida</td> -->
+								<td>Ausente</td>
+								<td align="center"><div id="perPerdida"/> </td>
+							  	<td align="center"><div id="resPerdida"/></td>
+							</tr>
+							<tr id='colores4'>
+								<td id='radiocell4'><input type='radio' name="color" value='B'></input></td>
+<!-- 								<td style="background-color: blue; width: 50px; border: black 1px solid" ></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: blue; width: 4px; border: black 1px solid" /> </td>
+								<td>Obturada</td>
+								<td align="center"><div id="perObturada"/> </td>
+							  	<td align="center"><div id="resObturada"/></td>
+							</tr>
+							<tr id='colores5'>
+								<td id='radiocell5'><input type='radio' name="color" value='R'></input></td>
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: red; width: 4px; border: black 1px solid" /> </td>
+<!-- 								<td style="background-color: red; width: 50px; border: black 1px solid" ></td> -->
+								<td>Cariada</td>
+								<td align="center"><div id="perCariada"/> </td>
+							  	<td align="center"><div id="resCariada"/></td>
+							</tr>
+							<tr id='colores6'>
+								<td id='radiocell6'><input type='radio' name="color" value='G'></input></td>
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: green; width: 4px; border: black 1px solid" /> </td>
+								<td>Fracturada</td>
+								<td align="center"><div id="perFracturada"/> </td>
+							  	<td align="center"><div id="resFracturada"/></td>
+							</tr>
+							<tr id='colores7'>
+								<td id='radiocell7'><input type='radio' name="color" value='W'></input></td>
+<!-- 							<td style="background-color: white; width: 50px; border: black 1px solid" ></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: white; width: 4px; border: black 1px solid" /> </td>
+<!-- 								<td style="background-color: white; width: 50px; border: black 1px solid" onclick="javascript:seleccionarColor('W')"></td> -->
+								<td>Borrar</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr id='colores7'>
+								<td colspan="2" />
+								<td bgcolor="#E0EEF7"><font color="#2779AA" style="font-weight: bold;">Total</font></td>
+								<td bgcolor="#E0EEF7" align="center"><div id="perTotal" style="font-weight:bold" /> </td>
+							  <td bgcolor="#E0EEF7" align="center"><div id="resTotal" style="font-weight:bold" /></td>
+							</tr>
+						</table>
+					</td>
+					
+					<td valign="top" >
+					
+					<table>
+						<tr>
+								<td style="padding-left: 200px;">
+
+								</td>
+						</tr>
+						</table>
+					</td>
+					
+				</tr>
+			</table>	
+			
+			
+				
+			
+			 
+			 <input id="prueba" type="hidden" name="prueba"/>
+				<input type="hidden" id="cPerCariada" 		name="cPerCariada" />
+			  	<input type="hidden" id="cResCariada" 		name="cResCariada" />
+			  	<input type="hidden" id="cPerObturada" 		name="cPerObturada" />
+			  	<input type="hidden" id="cResObturada" 		name="cResObturada" />
+			  	<input type="hidden" id="cPerPerdida" 		name="cPerPerdida" />
+			  	<input type="hidden" id="cResPerdida" 		name="cResPerdida" />
+			  	<input type="hidden" id="cPerProtesis" 		name="cPerProtesis" />
+			  	<input type="hidden" id="cResProtesis" 		name="cResProtesis" />
+			    <input type="hidden" id="cPerPorExtraer" 	name="cPerPorExtraer" />
+			  	<input type="hidden" id="cResPorExtraer" 	name="cResPorExtraer" />
+			  	<input type="hidden" id="cPerFracturada" 	name="cPerFracturada" />
+			  	<input type="hidden" id="cResFracturada" 	name="cResFracturada" />	
+				<input type="hidden" id="vDientes" 			name="vDientes" />
+				<input type="hidden" id="cPerTotal" 		name="cPerTotal" />
+				<input type="hidden" id="cResTotal" 		name="cResTotal" />
+				<input type="hidden" id="vPiezasMarcadas" 			name="vPiezasMarcadas" />
+			</div>
+			
+			
+
+			<div align="center">
+				
+			    <p:confirmDialog global="true" showEffect="fade"  hideEffect="fade" >
+			    	<div align="center">
+			        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			        </div>
+			    </p:confirmDialog>
+			    
+<!-- 		    <p:commandButton name="cerrar" actionListener="#{mBOdontograma.cerrarOdontograma}" value="Cerrar"/> -->
+</div>
+		</div>
+	
+
+		<!--! end of #container -->
+
+
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+
+<!-- 	</h:form> -->
+		
+
+	
+		dev   <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery-1.7.1.min.js"></script> 
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/knockout-2.0.0.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.svg.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.svggraph.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/odontograma_v0.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/nuevo_v0.js"></script>
+		<!-- end scripts-->
+		
+		<p:remoteCommand name="obtenerProcedimientoPieza" actionListener="#{mBOdontograma.obtenerProcedimientoPieza}"  update="detPieza"></p:remoteCommand>
+		
+		
+	    <p:dialog id="detPieza" widgetVar="detPieza" 
+		    height="250px" width="660px"
+			 closable="true"
+				position="center"
+				resizable="true"     
+				header="Tratamiento para la Pieza #{mBOdontograma.piezaMarcadaDetalle}"
+				styleClass="ui-dialog-titlebar,ui-dialog-title" 
+				style="background-color:#EFF7FE">
+			
+	    		<p:panel id="dtBuscProc1" header="Búsqueda" style=""> 
+		      	   <table width="500px" align="center" class="TableMarco">
+				   	<tr>
+			          <td>Código: <p:inputText id="idCodDiagTab1" onblur="value=value.toUpperCase()" style="width:40px; text-transform:uppercase;" value="#{mBOdontograma.codProcedimiento}"/>
+			          
+		               <p:commandButton icon="ui-icon ui-icon-circle-zoomin"
+		                                   actionListener="#{mBOdontograma.irVentanaProcedimientosOdontologicos}" update="dtListaProcedimientoOdonto"
+		                                   title= "Buscar"/>       	                                                  
+		              <p:inputText id="idDesDiagTab1"  style="width:250px;" value="#{mBOdontograma.desProcedimiento}"/>
+		              &nbsp;
+					 <p:commandButton icon="ui-icon-circle-arrow-s" 
+		                                   actionListener="#{mBOdontograma.adicionarProcedimiento}"
+		                                   update="dtTratamientos, idCodDiagTab1, idDesDiagTab1"                                   
+		                                   title= "Adicionar"  />
+		              </td>
+		            </tr> 
+		
+					</table>
+				<br></br>
+				
+				 </p:panel>
+			
+				
+			<p:dataTable id="dtTratamientos" var="procedimiento"  paginator="true" rows="10" 
+           		 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+           		  value="#{mBOdontograma.listaOdontoProc}" emptyMessage="No se encontraron registros." tableStyle="font-size: 7pt !important;" 
+           		  cellSeparator="0" styleClass="tablaGrilla">
+
+				<p:column headerText="Cod. Pro" width="7%" style="text-align:center; font-size: 7pt !important;">
+					<div>
+						<h:outputText value="#{procedimiento.codCps}" style="font-size: 7pt !important;" /> 
+					</div>
+				</p:column>	
+				<p:column headerText="Procedimiento" width="8%" style="font-size: 7pt !important;">
+					<div align="center">
+						<h:outputText value="#{procedimiento.desCps}" style="font-size: 7pt !important;"/>
+					</div>
+				</p:column>
+				<p:column headerText="Ir" width="5%" style="text-align:center;" >									     
+				
+			    </p:column>
+			</p:dataTable>
+			<br />
+			<br />
+			<div align="center">
+				<p:commandButton icon="ui-icon-closethick"   value="cerrar" actionListener="#{mBOdontograma.cerrarProcedimientoPieza}"/>
+			</div>
+			</p:dialog>
+
+
+
+<p:dialog id="idDialogMensaje2" widgetVar="dialogProcedimientoOdonto" closable="true" 
+     		position="center"
+     		resizable="true"
+     		header="Procedimientos"
+     		width="800px" height="500px"
+     		styleClass="ui-dialog-titlebar,ui-dialog-title"
+     		style="background-color:#EFF7FE"
+     		
+     		 >
+     		 <p:panel id="dtBuscProc2" header="Búsqueda" style=""> 
+      	   <table width="204" align="center" class="TableMarco">
+		   		 
+				<tr>
+					<td colspan="2" align="center">
+					<table  >
+					 <tr>					 
+					<td><p:outputLabel value="Cód." styleClass="letterSubTitle" /></td>
+					<td><p:outputLabel value="Descripcion: " styleClass="letterSubTitle" /></td>					
+					
+				</tr>
+					<tr> 
+					<td valign="top" ><p:inputText style="width:40px;" value="#{mBOdontograma.vcodProced}" onblur="value.toUpperCase()"/></td>
+					<td valign="top"><p:inputText style="width:230px;" value="#{mBOdontograma.vdesProced}" onblur="value.toUpperCase()"/></td>				
+					 </tr></table>
+					 </td>
+					</tr>
+					<tr>
+					<td colspan="2" align="center">
+					
+					 <p:commandButton actionListener="#{mBOdontograma.buscarProcedimiento}"  icon="ui-icon-search" 
+						 update="dtListaProcedimientoOdonto" value="Buscar" 
+						  >
+					 </p:commandButton> 
+						</td>
+					</tr>
+			</table>
+			<br></br>
+			
+			 </p:panel>
+			 
+		  		<p:panel id="dtListaProcedimientoOdonto" header="Lista de Procedimientos Odontológicos" style="margin-bottom:20px ">
+		
+           		<p:dataTable id="dtProcedimientoOdonto"  var="procedimientoOdontologico" paginator="true" rows="10" 
+           		 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+           		 value="#{mBOdontograma.listadoProcedimientoOdontologico}"
+           		 emptyMessage="No se encontraron registros"   
+ 				  >
+ 				 <p:column  headerText="Cod.Proced" width="8%">
+			    	<h:outputText value="#{procedimientoOdontologico.codCps}" /> 
+			    </p:column> 
+ 				<p:column  headerText="Descripcion Procedimiento" width="28%">
+			    	<h:outputText value="#{procedimientoOdontologico.desCps}" /> 
+			    </p:column>  
+			   <p:column headerText="Seleccionar" width="5%" style="text-align:center;" >									     
+				
+			    </p:column>
+			    
+			</p:dataTable>	
+          	 </p:panel>       	
+          	      <!-- /h:form-->
+     </p:dialog>
+
+
+
+
+
+<p:dialog id="idiaSesiones" widgetVar="dialogSesiones" closable="true" 
+     		position="center"
+     		resizable="true"
+     		header="Sesiones"
+     		styleClass="ui-dialog-titlebar,ui-dialog-title"
+     		style="background-color:#EFF7FE" >
+     		 
+		  		<p:panel id="dtListaSesiones" header="Sesiones Odontológicos" style="width: 500px">
+     			 <p:dataTable id="dtOdontSesion"  value="#{mBOdontograma.listaSesionesOdontograma}" var="vodontograma" 
+				    paginator="true" rows="5"  emptyMessage="Aún no cuenta con sesiones"  
+				    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	           		cellSeparator="0" styleClass="tablaGrilla" selectionMode="single" selection="#{mBOdontograma.selectedOdontograma}"
+	           		rowKey="#{vodontograma.numOdonto}">
+	           		
+			
+	           		
+					<p:column  headerText="Nro." style="align: right" width="7%">
+	 					        <h:outputText value="#{vodontograma.numOdonto}" style="float:right" /> 
+				    </p:column>  
+				    
+				    <p:column  headerText="Sesion" style="align: right" width="12%">
+	 					        <h:outputText value="#{vodontograma.sesion}" style="float:right" /> 
+				    </p:column>  
+				    
+	 				<p:column  headerText="Fec. Aten." width="12%">
+	 					        <h:outputText value="#{vodontograma.fecAtencion}"/> 
+				    </p:column>  
+
+				    <p:column  headerText="Por extraer">
+	 					 <h:outputText value="#{vodontograma.extraerTotal}" style="float:right"/> 
+				    </p:column>
+				    
+				    <p:column  headerText="Protesis">
+	 					 <h:outputText value="#{vodontograma.protesisTotal}" style="float:right"/> 
+				    </p:column>   
+				    
+				    <p:column  headerText="Ausente" >
+	 					 <h:outputText value="#{vodontograma.ausenteTotal}" style="float:right"/>
+				    </p:column>
+				    
+				    <p:column  headerText="Obturada" >
+	 					 <h:outputText value="#{vodontograma.obturadaTotal}" style="float:right"/>
+				    </p:column>
+				    
+				    <p:column  headerText="Cariada" >
+	 					 <h:outputText value="#{vodontograma.cariadaTotal}" style="float:right"/>
+				    </p:column>
+					
+					<p:column  headerText="Fracturada" >
+	 					 <h:outputText value="#{vodontograma.fracturadaTotal}" style="float:right"/>
+				    </p:column>
+					
+				    </p:dataTable>
+				</p:panel>
+				
+				<p:panel id="dtListaDetallePiezas" header="Detalle de Piezas Por Sesiones" style="width: 500px">
+     			 <p:dataTable id="dtDetallePiezas"  value="#{mBOdontograma.listaDetalleSesiones}" var="vdetsesiones" 
+				    paginator="true" rows="5"  emptyMessage="Aún no cuenta con sesiones"  
+				    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	           		cellSeparator="0" styleClass="tablaGrilla">
+	           		
+
+					<p:column  headerText="Estado Pieza"  >
+						<div align="center">
+	 						<h:outputText value="#{vdetsesiones.estPieza}"  />
+	 					</div> 
+				    </p:column>  
+	 				
+	 				<p:column  headerText="Pieza" >
+	 					<div align="center">
+	 						<h:outputText value="#{vdetsesiones.codPieza}"  />
+	 					</div> 
+				    </p:column>  
+					
+					<p:column  headerText="Cara Pieza" >
+						<div align="center">
+	 						<h:outputText value="#{vdetsesiones.caraPieza}"  />
+	 					</div> 
+				    </p:column>  
+					
+				    </p:dataTable>
+				</p:panel>
+     </p:dialog>
+
+
+	 <p:dialog id="detPiezaProceso" widgetVar="dialogAlertaCerrarOdontograma" 
+		    height="100px" width="400px"
+			 closable="true"
+				position="center"
+				resizable="true"     
+				header="Alerta"
+				styleClass="ui-dialog-titlebar,ui-dialog-title" 
+				style="background-color:#EFF7FE">
+			<p:panel id="alertaMsg">
+				<div align="center">
+				<p:outputLabel  value="Piezas sin procedimientos #{mBOdontograma.alertaMensaje}" style="font-size:13px !important; font-weight: bold; " />
+				</div>
+			
+				<p:spacer height="40" />
+				<div align="center">
+		               <p:commandButton value="Continuar en el Odontograma"
+		                                   actionListener="#{mBOdontograma.continuarOdontograma}"
+		                                   title= "Continuar"/>       	                                                  
+		              
+					 <p:commandButton value="Cerrar de todas formas" 
+		                                   actionListener="#{mBOdontograma.cerrarOdontograma}"
+		                                   title= "Cerrar"  />
+		
+				
+				 </div>
+			</p:panel>
+				 </p:dialog>
+
+</h:body>
+</ui:composition>

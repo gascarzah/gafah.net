@@ -1,0 +1,333 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+>
+<!-- <ui:define name="metadata"> -->
+<!-- 	    <f:metadata> -->
+<!-- 	        <f:event type="preRenderView" -->
+<!-- 	            listener="#{mBOdontograma.verOdontograma}" /> -->
+<!-- 	    </f:metadata> -->
+<!-- 	</ui:define> -->
+<script>
+
+var sPiezaMarcada = "#{mBOdontograma.sPiezaMarcada}";
+var sCaraMarcada = "#{mBOdontograma.sCaraMarcada}";
+var sColorMarcada = "#{mBOdontograma.sColorMarcada}";
+var sPiezaMarcadaInicial = "#{mBOdontograma.sPiezaMarcadaInicial}";
+var sCaraMarcadaInicial = "#{mBOdontograma.sCaraMarcadaInicial}";
+var sColorMarcadaInicial = "#{mBOdontograma.sColorMarcadaInicial}";
+
+
+var ipb ="#{mBOdontograma.optIpb}";
+var ec ="#{mBOdontograma.optEc}";
+var fcch ="#{mBOdontograma.optFcch}";
+var re ="#{mBOdontograma.optRe}";
+
+if( ipb != 0){
+	check("id_"+ipb,true);
+}
+
+if( ec != 0){
+	check("id_"+ec,true);
+}
+
+if( fcch != 0){
+	check("id_"+fcch,true);
+}
+
+if( re != 0){
+	check("id_"+re,true);
+}
+
+function check(valor,flag) {
+    document.getElementById(valor).checked = flag;
+}
+
+</script>
+		<meta http-equiv="Expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+
+
+
+		<!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       	More info: h5bp.com/b/378 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+		<!-- CSS: implied media=all -->
+		<!-- CSS concatenated and minified via ant build script-->
+		<!--   <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/css/style.css"/> -->
+		<!--   <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/css/jquery-ui-1.8.17.custom.css"/> -->
+		<link rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/jquery.svg.css" />
+		<link rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/odontograma.css" />
+		<!-- end CSS-->
+
+		<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/modernizr-2.0.6.min.js"></script>
+		<!-- scripts concatenated and minified via ant build script-->
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/validaciones.js?v=2"></script>
+	
+<h:body>	
+	  		
+
+		<div id="container">
+			
+			
+			<div id="main2">
+
+				
+				<div id="odontograma-wrapper">
+					<ui:include src="cuadranteSuperiorObsOdontograma.xhtml" />
+  					<div id="odontograma"></div>
+					<ui:include src="cuadranteInferiorObsOdontograma.xhtml" />
+				</div>
+				
+				
+				
+			</div>
+
+			<div id="tratamiento">
+			
+			<table>
+				<tr>
+					<td valign="top" >
+						<table cellspacing="0" >
+							<tr>
+<!-- 								<td bgcolor="#E0EEF7"></td> -->
+								<td colspan="3" align="center" bgcolor="#E0EEF7" ><font color="#2779AA" style="font-weight: bold;"> Opciones</font></td>
+								
+								<td bgcolor="#E0EEF7" align="center" width="100px"><font color="#2779AA" style="font-weight: bold;">Permanentes</font></td>
+							  <td bgcolor="#E0EEF7" align="center" width="100px"><font color="#2779AA" style="font-weight: bold;">Deciduas</font></td>
+							</tr>
+							<tr id='colores1'>
+								<td id='radiocell1'><input type='radio' name="color" value='Y'></input></td>
+<!-- 								<td align="center"> -->
+<!-- 								<td style="background-color: yellow; width: 50px; border: black 1px solid" > -->
+<!-- 								<p:graphicImage value="/resources/imagenes/porextraer.png" style="width:22px" /> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: #f4dde8; width: 4px; border: black 1px solid" /> </td>
+<!-- 								</td> -->
+								<td>Extraer</td>
+								<td align="center"><div id="perPorExtraer"/> </td>
+							  	<td align="center"><div id="resPorExtraer"/></td>
+							</tr>
+							<tr id='colores2'>
+								<td id='radiocell2'><input type='radio' name="color" value='O'></input></td>
+<!-- 								<td style="background-color: orange; width: 50px; border: black 1px solid" ></td> -->
+<!-- 								<td align="center"><p:graphicImage value="/resources/imagenes/protesis.png" style="width:22px" /></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: #D3D3D3; width: 4px; border: black 1px solid" /> </td>
+								<td>Protesis</td>
+								<td align="center"><div id="perProtesis"/> </td>
+							    <td align="center"><div id="resProtesis"/></td>
+							</tr>
+							<tr id='colores3'>
+								<td id='radiocell3'><input type='radio' name="color" value='D'></input></td>
+<!-- 								<td style="background-color: black; width: 50px; border: black 1px solid" ></td> -->
+<!-- 								<td align="center"><p:graphicImage value="/resources/imagenes/perdida.png" style="width:22px" /></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: black; width: 4px; border: black 1px solid" /> </td>
+<!-- 								<td>Perdida</td> -->
+								<td>Ausente</td>
+								<td align="center"><div id="perPerdida"/> </td>
+							  	<td align="center"><div id="resPerdida"/></td>
+							</tr>
+							<tr id='colores4'>
+								<td id='radiocell4'><input type='radio' name="color" value='B'></input></td>
+<!-- 								<td style="background-color: blue; width: 50px; border: black 1px solid" ></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: blue; width: 4px; border: black 1px solid" /> </td>
+								<td>Obturada</td>
+								<td align="center"><div id="perObturada"/> </td>
+							  	<td align="center"><div id="resObturada"/></td>
+							</tr>
+							<tr id='colores5'>
+								<td id='radiocell5'><input type='radio' name="color" value='R'></input></td>
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: red; width: 4px; border: black 1px solid" /> </td>
+<!-- 								<td style="background-color: red; width: 50px; border: black 1px solid" ></td> -->
+								<td>Cariada</td>
+								<td align="center"><div id="perCariada"/> </td>
+							  	<td align="center"><div id="resCariada"/></td>
+							</tr>
+							<tr id='colores6'>
+								<td id='radiocell6'><input type='radio' name="color" value='G'></input></td>
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: green; width: 4px; border: black 1px solid" /> </td>
+								<td>Fracturada</td>
+								<td align="center"><div id="perFracturada"/> </td>
+							  	<td align="center"><div id="resFracturada"/></td>
+							</tr>
+							<tr id='colores7'>
+								<td id='radiocell7'><input type='radio' name="color" value='W'></input></td>
+<!-- 							<td style="background-color: white; width: 50px; border: black 1px solid" ></td> -->
+								<td align="center"> <div style="display: inline-block; padding: 8px; background-color: white; width: 4px; border: black 1px solid" /> </td>
+<!-- 								<td style="background-color: white; width: 50px; border: black 1px solid" onclick="javascript:seleccionarColor('W')"></td> -->
+								<td>Borrar</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr id='colores7'>
+								<td colspan="2" />
+								<td bgcolor="#E0EEF7"><font color="#2779AA" style="font-weight: bold;">Total</font></td>
+								<td bgcolor="#E0EEF7" align="center"><div id="perTotal" style="font-weight:bold" /> </td>
+							  <td bgcolor="#E0EEF7" align="center"><div id="resTotal" style="font-weight:bold" /></td>
+							</tr>
+						</table>
+					</td>
+					<td  style="padding-left: 70px;"></td>
+					<td valign="top" >
+					
+					<table width="530px">
+						<tr>
+								<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+									INDICE DE LA PLACA BACTERIANA (I.P.B) 
+								</font></td>
+						</tr>
+						<tr>
+							<td>
+							    <input type="radio" name="IPB" value="430" id="id_430" /><font size="1">Menor ó igual  1</font> 
+							</td>
+							<td>      
+							     <input type="radio" name="IPB" value="431" id="id_431" /><font size="1">Mayor a 1 y menor ó igual a 2</font> 
+							</td>
+							<td>
+							      <input type="radio" name="IPB" value="432" id="id_432"/><font size="1">Mayor a 2</font> 
+							</td>
+							
+						</tr>
+						
+						<tr>
+								<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+									EXPERIENCIA DE CARIES (E.C) 
+								</font></td>
+						</tr>
+						<tr>
+							<td>
+							      <input type="radio" name="EC" value="434" id="id_434"/><font size="1">0 a 2 sup. oclu. cariad.</font> 
+							</td>
+							<td>      
+							      <input type="radio" name="EC" value="435" id="id_435" /><font size="1"> 2 a 6 sup. oclu. cariad.</font>
+							</td>
+							<td>
+							     <input type="radio" name="EC" value="436" id="id_436" /><font size="1"> Mayor A 6 sup. oclu. cariad.</font> 
+							</td>
+							
+						</tr>
+						
+						<tr>
+							<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+								FRECUENCIA DE CONSUMOS DE CARBOHIDRATOS (F.C.CH.) 
+							</font></td>
+						</tr>
+						<tr>
+							<td>
+							    <input type="radio" name="FCCH" value="438" id="id_438" /><font size="1">Menor ó igual a 3 Veces/Dia</font> 
+							</td>
+							<td>      
+							    <input type="radio" name="FCCH" value="439" id="id_439" /><font size="1">4 Veces/Dia</font> 
+							</td>
+							<td>
+							   <input type="radio" name="FCCH" value="440" id="id_440" /><font size="1">Mayor a 4 Veces/Dia</font> 
+							</td>
+							
+						</tr>
+						
+						<tr>
+							<td bgcolor="#E0EEF7" align="center" width="100px" colspan="3"><font color="#2779AA" style="font-weight: bold;">
+								RIESGO ESTOMATOLÓGICO (R.E) 
+							</font></td>
+						</tr>
+						<tr>
+							<td>
+							      <input type="radio" name="RE" value="442" id="id_442" /><font size="1">Bajo</font> 
+							</td>
+							<td>      
+							      <input type="radio" name="RE" value="443" id="id_443"/><font size="1">Medio</font> 
+							</td>
+							<td>
+							      <input type="radio" name="RE" value="444" id="id_444"/><font size="1">Alto</font> 
+							</td>
+							
+						</tr>
+						</table>
+					</td>
+					
+				</tr>
+			</table>	
+			
+			
+				
+			
+			 
+			 <input id="prueba" type="hidden" name="prueba"/>
+				<input type="hidden" id="cPerCariada" 		name="cPerCariada" />
+			  	<input type="hidden" id="cResCariada" 		name="cResCariada" />
+			  	<input type="hidden" id="cPerObturada" 		name="cPerObturada" />
+			  	<input type="hidden" id="cResObturada" 		name="cResObturada" />
+			  	<input type="hidden" id="cPerPerdida" 		name="cPerPerdida" />
+			  	<input type="hidden" id="cResPerdida" 		name="cResPerdida" />
+			  	<input type="hidden" id="cPerProtesis" 		name="cPerProtesis" />
+			  	<input type="hidden" id="cResProtesis" 		name="cResProtesis" />
+			    <input type="hidden" id="cPerPorExtraer" 	name="cPerPorExtraer" />
+			  	<input type="hidden" id="cResPorExtraer" 	name="cResPorExtraer" />
+			  	<input type="hidden" id="cPerFracturada" 	name="cPerFracturada" />
+			  	<input type="hidden" id="cResFracturada" 	name="cResFracturada" />	
+				<input type="hidden" id="vDientes" 			name="vDientes" />
+				<input type="hidden" id="cPerTotal" 		name="cPerTotal" />
+				<input type="hidden" id="cResTotal" 		name="cResTotal" />
+				<input type="hidden" id="vPiezasMarcadas" 			name="vPiezasMarcadas" />
+			</div>
+			
+			
+
+
+		</div>
+	
+
+		<!--! end of #container -->
+
+
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+
+<!-- 	</h:form> -->
+		
+
+	
+		  <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/knockout-2.0.0.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.svg.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.svggraph.min.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/odontograma2.js"></script>
+		<script type="text/javascript"
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/nuevo.js"></script>
+		<!-- end scripts-->
+		
+<!-- 		<p:remoteCommand name="obtenerProcedimientoPieza" actionListener="#{mBOdontograma.obtenerProcedimientoPieza}"  update="detPieza"></p:remoteCommand> -->
+		
+
+</h:body>
+</ui:composition>
